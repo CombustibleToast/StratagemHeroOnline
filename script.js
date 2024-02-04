@@ -246,17 +246,18 @@ async function countDown(){
 
     if(timeRemaining <= 0){
         gameOver();
+        return;
     }
 
-    // Apply countdown
-    timeRemaining -= COUNTDOWN_STEP;
-    updateTimeBar();
-
-    // Set timeout for next countdown step
+    // Immediately Set timeout for next countdown step
     setTimeout(() => {
         countDown();
         // console.log(timeRemaining)
     }, COUNTDOWN_STEP);
+
+    // Apply countdown
+    timeRemaining -= COUNTDOWN_STEP;
+    updateTimeBar();
 }
 
 function updateTimeBar(){

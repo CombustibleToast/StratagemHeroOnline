@@ -1,16 +1,36 @@
 <!DOCTYPE HTML>
 
 <head>
-	<title> Strategem Hero </title>
+	<title> stratagem Hero </title>
     <style>
         .interactable-center-container{
+            width: 50%;
             margin: auto;
         }
 
-        .current-strategem-icon{
+        .stratagem-name{
+            color:white;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            width: 50%;
             margin: auto;
+            text-align: center;
+        }
+
+        .stratagem{
+            margin: auto;
+            width: 50%;
+            align-content: center;
+        }
+
+        .stratagem-icon{
             border: .2em solid blueviolet;
             border-radius: .2em;
+            display: block;
+            margin: auto;
+        }
+
+        .arrows-container{
+            align-content: center;
         }
 
         .arrow-image{
@@ -26,8 +46,14 @@
 
 <body class="background">
     <div class="interactable-center-container">
-        <div class="strategem">
-            <img class="strategem-icon" id="current-strategem-icon" src="Images/Strategem Icons/Strat Resupply mk1.png">
+        <div class="stratagem-name">
+            <h2 id="stratagem-name">
+                Placeholder
+            </h2>
+        </div>
+
+        <div class="stratagem">
+            <img class="stratagem-icon" id="current-stratagem-icon" src="Images/stratagem Icons/Strat Resupply mk1.png">
         </div>
 
         <div class="arrows-container" id="arrows-container">
@@ -43,5 +69,5 @@
     </div>
 </body>
 
-<script type="text/javascript" src="./data/Strategem_Sequences.json"></script>
+<script type="text/javascript" src="./data/strategem_Sequences.json"></script>
 <script type="text/javascript" src="./script.js"></script>

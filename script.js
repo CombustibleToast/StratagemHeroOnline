@@ -1,4 +1,4 @@
-// Load strategem data
+// Load stratagem data
 let stratagems = JSON.parse(data).list;
 console.log(stratagems);
 
@@ -10,52 +10,53 @@ addEventListener("keydown", (event) => {
     keypress(event.code);
 });
 
-let currentStrategemDone = true;
+let currentStratagemDone = true;
 let currentSequenceIndex = 0;
 var currentArrowSequenceTags = undefined;
 
-// Load first strategem
-loadNextStrategem();
+// Load first stratagem
+loadNextStratagem();
 
 //~~~//
 
-function keypress(code){
-    // Guard clause; don't do anything if there's no active strategem
-    if(currentStrategemDone)
+function keypress(keyCode){
+    // Guard clause; don't do anything if there's no active stratagem
+    if(currentStratagemDone)
         return;
 
-    // Map the keypress to the arrow filename; ignore invalid keypresses
-    let pressedKeyFilename = undefined;
-    switch(code){
+    // Ignore invalid keypresses
+    switch(keyCode){
         case "KeyW":
-            pressedKeyFilename = "Arrow_4_U.png";
-            break;
         case "KeyS":
-            pressedKeyFilename = "Arrow_1_D.png";
-            break;
         case "KeyA":
-            pressedKeyFilename = "Arrow_2_L.png";
-            break;
         case "KeyD":
-            pressedKeyFilename = "Arrow_3_R.png";
             break;
         default: 
             console.log("Ignored Key");
+            return;
     }
 
     // Check the keypress against the current sequence
-    if(pressedKeyFilename == currentArrowSequenceTags[currentSequenceIndex].code){
+    console.log(`Checking ${keyCode} against ${currentArrowSequenceTags[currentSequenceIndex].code}`);
+    if(keyCode == currentArrowSequenceTags[currentSequenceIndex].code){
         //Success, apply the success
         //TODO: Set currentArrowSequenceTags[currentSequenceIndex] to completed color
         currentSequenceIndex++;
-        console.log("Correct!");
+        console.log(currentSequenceIndex);
         
         //Check if that success completes the entire sequence. 
         if(currentSequenceIndex == currentArrowSequenceTags.length){
-            console.log("Strategem done, loading next");
+            console.log("Stratagem done, loading next");
             currentSequenceIndex = 0;
-            loadNextStrategem();
+            loadNextStratagem();
         }
+    }
+    else if (keyCode == currentArrowSequenceTags[0].code){
+        //Edge case; if they're wrong but their input is the same as the first code, reset to first.
+        //TODO: Set all currentArrowSequenceTags to normal color and play some kind of failure animation
+        //TODO: Set currentArrowSequenceTags[0] to completed color
+        currentSequenceIndex = 1;
+        console.log("Fail but maintaining first correct input.");
     }
     else{
         //Failure, reset progress
@@ -65,19 +66,22 @@ function keypress(code){
     }
 }
 
-function loadNextStrategem(){
-    // Pick a random strategem
+function loadNextStratagem(){
+    // Pick a random stratagem
     let currentStratagem = pickRandomStratagem();
-    console.log(currentStratagem);
+    // console.log(currentStratagem);
 
-    // Set the strategem's picture
-    document.getElementById("current-strategem-icon").src = `./Images/Strategem Icons/${currentStratagem.image}`;
+    // Set the stratagem's picture
+    document.getElementById("current-stratagem-icon").src = `./Images/Stratagem Icons/${currentStratagem.image}`;
 
     // Show arrow icons
     // Sequence list is global for use in the keypress event
     currentArrowSequenceTags = showArrowSequence(currentStratagem.sequence);
 
-    currentStrategemDone = false;
+    // Stratagem name
+    document.getElementById("stratagem-name").innerHTML = currentStratagem.name;
+
+    currentStratagemDone = false;
 }
 
 function pickRandomStratagem(){
@@ -96,8 +100,21 @@ function showArrowSequence(arrowSequence){
         let img = document.createElement("img");
         td.appendChild(img);
         img.setAttribute("src", `./Images/Arrows/${arrow}`);
-        // img.setAttribute("code", arrow);
-        img.code = arrow;
+        // Map filename to keycode
+        switch(arrow){
+            case "Arrow_4_U.png":
+                img.code = "KeyW";
+            break;
+            case "Arrow_1_D.png":
+                img.code = "KeyS";
+            break;
+            case "Arrow_2_L.png":
+                img.code = "KeyA";
+            break;
+            case "Arrow_3_R.png":
+                img.code = "KeyD";
+            break;
+        }
         arrowsContainer.appendChild(td);
         arrowTags.push(img);
     }

@@ -44,19 +44,28 @@ function keypress(keyCode){
 
     // Ignore invalid keypresses
     // Play associated sound
+    console.log(keyCode);
     let sfx;
     switch(keyCode){
         case "KeyW":
+        case "ArrowUp":
             sfx = sfxUp;
+            keyCode = "KeyW";
             break;
         case "KeyS":
+        case "ArrowDown":
             sfx = sfxDown;
+            keyCode = "KeyS";
             break;
         case "KeyA":
+        case "ArrowLeft":
             sfx = sfxLeft;
+            keyCode = "KeyA";
             break;
         case "KeyD":
+        case "ArrowRight":
             sfx = sfxRight;
+            keyCode = "KeyD";
             break;
         default: 
             return;

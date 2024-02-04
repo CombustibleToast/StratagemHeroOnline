@@ -27,7 +27,6 @@ const TOTAL_TIME = 10000;
 const COUNTDOWN_STEP = 10;
 const CORRECT_TIME_BONUS = 500;
 var timeRemaining = TOTAL_TIME;
-var numCompletedStratagems = 0
 var completedStrategemsList = [];
 
 // Load first stratagem
@@ -164,7 +163,7 @@ function gameOver(){
 
     // Write score to readout
     let scoreReadout = document.getElementById("score-readout");
-    scoreReadout.innerHTML = `SCORE: ${numCompletedStratagems}`
+    scoreReadout.innerHTML = `SCORE: ${completedStrategemsList.length}`
 
     // Write completed strategems to readout
     let stratagemReadout = document.getElementById("completed-strategems-readout");

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+
+<head>
+	<title> Strategem Hero </title>
+    <style>
+        .interactable-center-container{
+            margin: auto;
+        }
+
+        .current-strategem-icon{
+            margin: auto;
+            border: .2em solid blueviolet;
+            border-radius: .2em;
+        }
+
+        .arrow-image{
+            margin: auto;
+            border-radius: .2em;
+        }
+
+        .background{
+            background-color:black;
+        }
+    </style>
+</head>
+
+<body class="background">
+    <div class="interactable-center-container">
+        <div class="strategem">
+            <img class="strategem-icon" id="current-strategem-icon" src="Images/Strategem Icons/Strat Resupply mk1.png">
+        </div>
+
+        <div class="arrows-container" id="arrows-container">
+            <table>
+                <tr>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_4_U.png"></td>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_1_D.png"></td>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_2_L.png"></td>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_3_R.png"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="./data/Strategem_Sequences.json"></script>
+<script type="text/javascript" src="./script.js"></script>

@@ -235,7 +235,7 @@ function copyShare(){
 
     //Set timeout to change it back
     //Doesn't work, unable to pass in original text
-    setTimeout((buttonElement, buttonOriginalText) => {
+    setTimeout(() => {
         buttonElement.innerHTML = buttonOriginalText;
     }, 3000);
 }

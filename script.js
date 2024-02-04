@@ -18,7 +18,7 @@ var sfxUp = new Audio("./Images/Sounds/4_U.mp3");
 
 // Create global tracking variables
 var gameIsRunning = true;
-const NEW_STRATEGEM_TIMEOUT = 1000;
+const NEW_STRATEGEM_TIMEOUT = 200;
 var currentStratagem = undefined;
 var currentStratagemDone = true;
 var currentSequenceIndex = 0;
@@ -107,7 +107,7 @@ function loadNextStratagem(){
     // console.log(currentStratagem);
 
     // Set the stratagem's picture
-    document.getElementById("current-stratagem-icon").src = `./Images/Stratagem Icons/${currentStratagem.image}`;
+    document.getElementById("current-stratagem-icon").src = `./Images/Stratagem\ Icons/${currentStratagem.image}`;
 
     // Show arrow icons
     // Sequence list is global for use in the keypress event

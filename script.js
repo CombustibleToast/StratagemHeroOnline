@@ -44,7 +44,6 @@ function keypress(keyCode){
 
     // Ignore invalid keypresses
     // Play associated sound
-    console.log(keyCode);
     let sfx;
     switch(keyCode){
         case "KeyW":
@@ -185,26 +184,38 @@ function gameOver(){
 }
 
 function stratagemListToString(html){
+    // const TOTAL_PADDING = 50;
     let re = "";
     for(let stratagem of completedStrategemsList){
-        re += stratagem.name + ": \t\t";
+        let line = `${stratagem.name}: `;
+        
+        //Put padding spaces
+        // console.log(`i ${line.length}`)
+        // for(let i = line.length; i < TOTAL_PADDING; i++){
+        //     line += " ";
+        //     console.log(`put space: ${line}.`)
+        // }
+
+        //Put arrows
         for(let arrow of stratagem.sequence){
             switch(arrow){
                 case "Arrow_4_U.png":
-                    re += "🡅";
+                    line += "🡅";
                 break;
                 case "Arrow_1_D.png":
-                    re += "🡇";
+                    line += "🡇";
                 break;
                 case "Arrow_2_L.png":
-                    re += "🡄";
+                    line += "🡄";
                 break;
                 case "Arrow_3_R.png":
-                    re += "🡆";
+                    line += "🡆";
                 break;
             }
         }
-        re += html ? "<br>" : "\n";
+        line += html ? "<br>" : "\n";
+        console.log(line);
+        re += line;
     }
 
     return re;

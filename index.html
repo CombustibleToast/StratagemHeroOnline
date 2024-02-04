@@ -3,8 +3,14 @@
 <head>
 	<title> stratagem Hero </title>
     <style>
+        body{
+            width: 100%;
+            height: 100%;
+        }
+
         .interactable-center-container{
             width: 50%;
+            height: 100%;
             margin: auto;
         }
 
@@ -29,13 +35,20 @@
             margin: auto;
         }
 
-        .arrows-container{
-            align-content: center;
+        .arrows-table{
+            margin: auto;
+            align-items: center;
         }
 
         .arrow-image{
             margin: auto;
-            border-radius: .2em;
+        }
+
+        .arrow-incomplete-filter { 
+            filter: brightness(0.25); 
+        }
+
+        .arrow-complete-filter { 
         }
 
         .background{
@@ -56,16 +69,14 @@
             <img class="stratagem-icon" id="current-stratagem-icon" src="Images/stratagem Icons/Strat Resupply mk1.png">
         </div>
 
-        <div class="arrows-container" id="arrows-container">
-            <table>
-                <tr>
-                    <td><img class="arrow-image" src="Images/Arrows/Arrow_4_U.png"></td>
-                    <td><img class="arrow-image" src="Images/Arrows/Arrow_1_D.png"></td>
-                    <td><img class="arrow-image" src="Images/Arrows/Arrow_2_L.png"></td>
-                    <td><img class="arrow-image" src="Images/Arrows/Arrow_3_R.png"></td>
-                </tr>
-            </table>
-        </div>
+        <table class="arrows-table" id="arrows-container">
+            <tr>
+                <td><img class="arrow-image" src="Images/Arrows/Arrow_4_U.png"></td>
+                <td><img class="arrow-image" src="Images/Arrows/Arrow_1_D.png"></td>
+                <td><img class="arrow-image" src="Images/Arrows/Arrow_2_L.png"></td>
+                <td><img class="arrow-image" src="Images/Arrows/Arrow_3_R.png"></td>
+            </tr>
+        </table>
     </div>
 </body>
 

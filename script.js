@@ -10,6 +10,12 @@ addEventListener("keydown", (event) => {
     keypress(event.code);
 });
 
+// Load SFX
+var sfxDown = new Audio("./Images/Sounds/1_D.mp3");
+var sfxLeft = new Audio("./Images/Sounds/2_l.mp3");
+var sfxRight = new Audio("./Images/Sounds/3_R.mp3");
+var sfxUp = new Audio("./Images/Sounds/4_U.mp3");
+
 let currentStratagemDone = true;
 let currentSequenceIndex = 0;
 var currentArrowSequenceTags = undefined;
@@ -25,16 +31,28 @@ function keypress(keyCode){
         return;
 
     // Ignore invalid keypresses
+    // Play associated sound
+    let sfx;
     switch(keyCode){
         case "KeyW":
+            sfx = sfxUp;
+            break;
         case "KeyS":
+            sfx = sfxDown;
+            break;
         case "KeyA":
+            sfx = sfxLeft;
+            break;
         case "KeyD":
+            sfx = sfxRight;
             break;
         default: 
             console.log("Ignored Key");
             return;
     }
+
+    // Play/replay sound
+    sfx.paused ? sfx.play() : sfx.currentTime = 0;
 
     // Check the keypress against the current sequence
     console.log(`Checking ${keyCode} against ${currentArrowSequenceTags[currentSequenceIndex].code}`);
@@ -63,6 +81,14 @@ function keypress(keyCode){
         //TODO: Set all currentArrowSequenceTags to normal color and play some kind of failure animation
         currentSequenceIndex = 0;
         console.log("Fail!");
+    }
+
+    updateArrowFilters();
+}
+
+function updateArrowFilters(){
+    for(i = 0; i < currentArrowSequenceTags.length; i++){
+        currentArrowSequenceTags[i].setAttribute("class", i < currentSequenceIndex ? "arrow-complete-filter" : "arrow-incomplete-filter")
     }
 }
 
@@ -100,6 +126,8 @@ function showArrowSequence(arrowSequence){
         let img = document.createElement("img");
         td.appendChild(img);
         img.setAttribute("src", `./Images/Arrows/${arrow}`);
+        img.setAttribute("class", `arrow-incomplete-filter`);
+
         // Map filename to keycode
         switch(arrow){
             case "Arrow_4_U.png":

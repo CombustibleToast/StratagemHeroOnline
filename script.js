@@ -18,7 +18,7 @@ var sfxUp = new Audio("./Images/Sounds/4_U.mp3");
 
 // Create global tracking variables
 var gameIsRunning = true;
-const NEW_STRATEGEM_TIMEOUT = 200;
+const NEW_STRATEGEM_TIMEOUT = 1000;
 var currentStratagem = undefined;
 var currentStratagemDone = true;
 var currentSequenceIndex = 0;

@@ -225,7 +225,7 @@ function copyShare(){
     // Gather text and write to clipboard
     let output = `## My Stratagem Hero Online Score: ${completedStrategemsList.length}\n`
     output += stratagemListToString(false);
-    output += "Do your part! Try Stratagem Hero Online here: https://combustibletoast.github.io/"
+    output += "Do your part! Play Stratagem Hero Online: https://combustibletoast.github.io/"
     navigator.clipboard.writeText(output);
 
     //Change button's text

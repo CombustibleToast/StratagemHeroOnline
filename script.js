@@ -223,7 +223,7 @@ function stratagemListToString(html){
 
 function copyShare(){
     // Gather text and write to clipboard
-    let output = `My Strategem Hero Online Score: ${completedStrategemsList.length}\n`
+    let output = `## My Strategem Hero Online Score: ${completedStrategemsList.length}\n`
     output += stratagemListToString(false);
     output += "Do your part! Try Strategem Hero Online here: https://combustibletoast.github.io/"
     navigator.clipboard.writeText(output);

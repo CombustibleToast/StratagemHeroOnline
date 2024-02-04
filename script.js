@@ -25,7 +25,7 @@ var currentSequenceIndex = 0;
 var currentArrowSequenceTags = undefined;
 const TOTAL_TIME = 10000;
 const COUNTDOWN_STEP = 10;
-const CORRECT_TIME_BONUS = 500;
+const CORRECT_TIME_BONUS = 700;
 var timeRemaining = TOTAL_TIME;
 var completedStrategemsList = [];
 

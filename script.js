@@ -22,7 +22,9 @@ const NEW_STRATEGEM_TIMEOUT = 200;
 var currentStratagem = undefined;
 var currentStratagemDone = true;
 var currentSequenceIndex = 0;
+var currentRefreshIndex = 0;
 var currentArrowSequenceTags = undefined;
+var refreshArrowSequenceTags;
 const TOTAL_TIME = 10000;
 const COUNTDOWN_STEP = 10;
 const CORRECT_TIME_BONUS = 700;
@@ -38,12 +40,7 @@ countDown();
 //~~~//
 
 function keypress(keyCode){
-    // Guard clause; don't do anything if there's no active stratagem
-    if(currentStratagemDone || !gameIsRunning)
-        return;
-
     // Ignore invalid keypresses
-    // Play associated sound
     let sfx;
     switch(keyCode){
         case "KeyW":
@@ -70,9 +67,17 @@ function keypress(keyCode){
             return;
     }
 
-    // Play/replay sound
-    sfx.paused ? sfx.play() : sfx.currentTime = 0;
+    //If the game is running, apply its effects to the game
+    if(gameIsRunning)
+        checkGameKeypress(keyCode, sfx);
 
+    //If the restart screen is up, apply keypresses to the restart button
+    else
+        checkRefreshKeypress(keyCode, sfx);
+    
+}
+
+function checkGameKeypress(keyCode, sfx){
     // Check the keypress against the current sequence
     if(keyCode == currentArrowSequenceTags[currentSequenceIndex].code){
         //Success, apply the success
@@ -97,14 +102,34 @@ function keypress(keyCode){
         //Failure, reset progress
         //TODO: play some kind of failure animation
         currentSequenceIndex = 0;
-    }
+    }   
+    updateArrowFilters(currentArrowSequenceTags, currentSequenceIndex);
 
-    updateArrowFilters();
+    // Play/replay sound
+    sfx.paused ? sfx.play() : sfx.currentTime = 0;
 }
 
-function updateArrowFilters(){
-    for(i = 0; i < currentArrowSequenceTags.length; i++){
-        currentArrowSequenceTags[i].setAttribute("class", i < currentSequenceIndex ? "arrow-complete-filter" : "arrow-incomplete-filter")
+function checkRefreshKeypress(keyCode, sfx){
+    // Check the keypress against the current sequence
+    if(keyCode == refreshArrowSequenceTags[currentRefreshIndex].code){
+        //Success, apply the success
+        currentRefreshIndex++;
+        
+        //Check if that success completes the entire sequence. 
+        if(currentRefreshIndex == refreshArrowSequenceTags.length){
+            window.location.reload()
+        }
+    }
+    updateArrowFilters(refreshArrowSequenceTags, currentRefreshIndex);
+
+    // Play/replay sound
+    sfx.paused ? sfx.play() : sfx.currentTime = 0;
+}
+
+
+function updateArrowFilters(arrowTags, index){
+    for(i = 0; i < arrowTags.length; i++){
+        arrowTags[i].setAttribute("class", i < index ? "arrow-complete-filter" : "arrow-incomplete-filter")
     }
 }
 
@@ -130,9 +155,11 @@ function pickRandomStratagem(){
     return stratagems[Math.floor(Math.random() * stratagems.length)];
 }
 
-function showArrowSequence(arrowSequence){
+function showArrowSequence(arrowSequence, arrowsContainer){
+    if(arrowsContainer == undefined)
+        arrowsContainer = document.getElementById("arrows-container");
+
     // Remove all table elements of old arrows
-    let arrowsContainer = document.getElementById("arrows-container");
     arrowsContainer.innerHTML = '';
 
     //Create new arrow elements
@@ -176,6 +203,12 @@ function gameOver(){
     // Write completed strategems to readout
     let stratagemReadout = document.getElementById("completed-strategems-readout");
     stratagemReadout.innerHTML = stratagemListToString(true);
+
+    // Show refresh arrow sequence
+    let sequence = ["Arrow_2_L.png", "Arrow_4_U.png", "Arrow_3_R.png"];
+    let container = document.getElementById("refresh-arrows-container");
+    refreshArrowSequenceTags = showArrowSequence(sequence, container);
+    // console.log(`Refresh tags ${refreshArrowSequenceTags}`);
 
     // Show the popup
     let popup = document.getElementById("game-over-popup");

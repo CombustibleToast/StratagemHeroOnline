@@ -128,6 +128,19 @@
             display: block;
             margin: auto;
         }
+
+        #refresh-button {
+            background-color: #ad9f00;
+            border: 1px white;
+            color: #FFE900;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1.7em;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin: auto;
+        }
     </style>
 </head>
 
@@ -186,6 +199,18 @@
         </p>
         <button onclick="copyShare()" id="share-button">
             Share your score!
+        </button>
+        <br>
+        <button onclick="window.location.reload()" id="refresh-button">
+            Play Again
+            <table class="arrows-table" id="refresh-arrows-container">
+                <tr>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_4_U.png"></td>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_1_D.png"></td>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_2_L.png"></td>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_3_R.png"></td>
+                </tr>
+            </table>
         </button>
     </div>
 </body>

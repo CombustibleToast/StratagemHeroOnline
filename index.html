@@ -1,19 +1,36 @@
 <!DOCTYPE HTML>
 
 <head>
-    <title> stratagem Hero </title>
+    <title> Stratagem Hero </title>
+    <meta charset="UTF-8">
     <style>
         body {
-            width: 100%;
+            width: 99%;
             height: 100%;
         }
 
         .interactable-center-container {
-            margin: 0;
-            position: absolute;
             top: 50%;
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
+            margin: auto;
+            width: 100%;
+        }
+
+        .logo-container {
+            margin: auto;
+            width: 50%;
+        }
+
+        .logo {
+            margin: auto;
+            width: 100%;
+        }
+
+        .title {
+            color: #FFE900;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            width: 50%;
+            margin: auto;
+            text-align: center;
         }
 
         .stratagem-name {
@@ -50,16 +67,79 @@
             filter: brightness(0.25);
         }
 
-        .arrow-complete-filter {}
+        .time-remaining-container {
+            width: 50%;
+            background-color: black;
+            margin: auto;
+        }
+
+        #time-remaining-bar {
+            height: 20px;
+            background-color: #FFE900;
+            margin: auto;
+        }
 
         .background {
             background-color: black;
+        }
+
+        .info {
+            color: gray;
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .larger-info {
+            font-size: 2em;
+        }
+
+        .game-over-popup {
+            position: absolute;
+            border-top-left-radius: 5%;
+            border-bottom-right-radius: 5%;
+            background-color: #5c5400;
+            z-index: 10;
+            width: 40%;
+            height: 30%;
+            transform: translate(75%, -65%);
+        }
+
+        #completed-strategems-readout {
+            color: #FFE900;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            text-align: left;
+        }
+
+        #share-button {
+            background-color: #ad9f00;
+            border: 1px white;
+            color: #FFE900;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 2em;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin: auto;
         }
     </style>
 </head>
 
 <body class="background">
     <div class="interactable-center-container">
+        <div class="logo-container">
+            <img class="logo" src="./Images/Helldivers_2_logo.webp">
+        </div>
+
+        <h1 class="title">
+            STRATAGEM HERO ONLINE
+        </h1>
+
+        <br>
+
         <div class="stratagem-name">
             <h2 id="stratagem-name">
                 Placeholder
@@ -78,6 +158,31 @@
                 <td><img class="arrow-image" src="Images/Arrows/Arrow_3_R.png"></td>
             </tr>
         </table>
+
+
+        <div class="time-remaining-container">
+            <div id="time-remaining-bar"></div>
+        </div>
+
+
+        <div class="info">
+            <p class="larger-info">
+                Check out Helldivers 2 on <a href="https://store.steampowered.com/app/553850/HELLDIVERS_2/" target="_blank">Steam</a> and <a href="https://www.playstation.com/en-us/games/helldivers-2/" target="_blank">Playstation!</a><br>
+            </p>
+            Made by <a href="https://github.com/CombustibleToast" target="_blank">CombustibleToast</a><br>
+            View the source code <a href="https://github.com/CombustibleToast/StratagemHeroOnline" target="_blank">on Github</a><br>
+            Report an issue <a href="https://github.com/CombustibleToast/StratagemHeroOnline/issues" target="_blank">here</a>
+        </div>
+    </div>
+
+    <div class="game-over-popup" id="game-over-popup" hidden="hidden">
+        <h1 class="title" id="score-readout">SCORE: ##</h1>
+        <p id="completed-strategems-readout">
+
+        </p>
+        <button onclick="copyShare()" id="share-button">
+            Share your score!
+        </button>
     </div>
 </body>
 

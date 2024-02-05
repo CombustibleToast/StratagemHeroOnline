@@ -44,17 +44,30 @@
             text-align: center;
         }
 
-        .stratagem {
-            margin: auto;
-            width: 50%;
-            align-content: center;
+        .stratagems-table {
+            margin-left: 47.8%;
+            align-items: center;
         }
 
         .stratagem-icon {
-            border: .2em solid #FFE900;
-            border-radius: .2em;
             display: block;
             margin: auto;
+        }
+
+        #stratagem-icon-0 {
+
+        }
+
+        #stratagem-icon-1 {
+            opacity: 50%;
+        }
+
+        #stratagem-icon-2 {
+            opacity: 25%;
+        }
+
+        #stratagem-icon-3 {
+            opacity: 12.5%;
         }
 
         .arrows-table {
@@ -162,9 +175,14 @@
             </h2>
         </div>
 
-        <div class="stratagem">
-            <img class="stratagem-icon" id="current-stratagem-icon" src="Images/stratagem Icons/Strat Resupply mk1.png">
-        </div>
+        <table class="stratagems-table" id="stratagems-table">
+            <tr>
+                <td><img class="stratagem-icon" id="stratagem-icon-0" src="Images/stratagem Icons/Strat Resupply mk1.png"></td>
+                <td><img class="stratagem-icon" id="stratagem-icon-1" src="Images/stratagem Icons/Strat Resupply mk1.png"></td>
+                <td><img class="stratagem-icon" id="stratagem-icon-2" src="Images/stratagem Icons/Strat Resupply mk1.png"></td>
+                <td><img class="stratagem-icon" id="stratagem-icon-3" src="Images/stratagem Icons/Strat Resupply mk1.png"></td>
+            </tr>
+        </table>
 
         <table class="arrows-table" id="arrows-container">
             <tr>

@@ -19,7 +19,6 @@ var sfxUp = new Audio("./Images/Sounds/4_U.mp3");
 // Create global tracking variables
 var gameIsRunning = true;
 var countDownPaused = false;
-const NEW_STRATEGEM_TIMEOUT = 200;
 var currentStratagem = undefined;
 var currentSequenceIndex = 0;
 var currentRefreshIndex = 0;
@@ -27,12 +26,20 @@ var currentArrowSequenceTags = undefined;
 var refreshArrowSequenceTags;
 const TOTAL_TIME = 10000;
 const COUNTDOWN_STEP = 10;
-const CORRECT_TIME_BONUS = 700;
+const NEW_STRATEGEM_TIMEOUT = 200;
+const CORRECT_TIME_BONUS = 500;
 var timeRemaining = TOTAL_TIME;
 var completedStrategemsList = [];
+const CURRENT_STRATAGEM_LIST_LENGTH = 4; //dependent on the html, don't change without modifying html too
+var currentStratagemsList = [];
 
-// Load first stratagem
-loadNextStratagem();
+// Load first stratagems
+for(let i = 0; i < CURRENT_STRATAGEM_LIST_LENGTH; i++){
+    currentStratagemsList.push(pickRandomStratagem());
+}
+
+// Show stratagems
+refreshStratagemDisplay();
 
 // Bootstrap countdown timer
 countDown();
@@ -89,13 +96,16 @@ function checkGameKeypress(keyCode, sfx){
             timeRemaining += CORRECT_TIME_BONUS;
             countDownPaused = true;
 
-            //Add completed stratagem to list
-            completedStrategemsList.push(currentStratagem);
+            //Add completed stratagem to completed list and remove from active list
+            completedStrategemsList.push(currentStratagemsList.shift());
+
+            //Add a new stratagem to the active list
+            currentStratagemsList.push(pickRandomStratagem());
 
             //Set a delay for when the timer should unpause and the next stratagem should be loaded
             setTimeout(() => {
                 currentSequenceIndex = 0;
-                loadNextStratagem();
+                refreshStratagemDisplay();
                 countDownPaused = false;
             }, NEW_STRATEGEM_TIMEOUT);
         }
@@ -135,27 +145,25 @@ function checkRefreshKeypress(keyCode, sfx){
     sfx.paused ? sfx.play() : sfx.currentTime = 0;
 }
 
-
 function updateArrowFilters(arrowTags, index){
     for(i = 0; i < arrowTags.length; i++){
         arrowTags[i].setAttribute("class", i < index ? "arrow-complete-filter" : "arrow-incomplete-filter")
     }
 }
 
-function loadNextStratagem(){
-    // Pick a random stratagem
-    currentStratagem = pickRandomStratagem();
-    // console.log(currentStratagem);
+function refreshStratagemDisplay(){
+    console.log(`Refreshing ${currentStratagemsList.length} strats`);
+    for(let i in currentStratagemsList){
+        // Show the stratagem's picture in the correct slot
+    console.log(`${currentStratagemsList[i]} .image is ${currentStratagemsList[i].image}`);
+    document.getElementById(`stratagem-icon-${i}`).src = `./Images/Stratagem\ Icons/${currentStratagemsList[i].image}`;
+    }
 
-    // Set the stratagem's picture
-    document.getElementById("current-stratagem-icon").src = `./Images/Stratagem\ Icons/${currentStratagem.image}`;
+    // Show arrow icons for the current active stratagem
+    currentArrowSequenceTags = showArrowSequence(currentStratagemsList[0].sequence);
 
-    // Show arrow icons
-    // Sequence list is global for use in the keypress event
-    currentArrowSequenceTags = showArrowSequence(currentStratagem.sequence);
-
-    // Stratagem name
-    document.getElementById("stratagem-name").innerHTML = currentStratagem.name;
+    // Show active stratagem name
+    document.getElementById("stratagem-name").innerHTML = currentStratagemsList[0].name;
 }
 
 function pickRandomStratagem(){

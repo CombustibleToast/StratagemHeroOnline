@@ -85,11 +85,18 @@ function checkGameKeypress(keyCode, sfx){
         
         //Check if that success completes the entire sequence. 
         if(currentSequenceIndex == currentArrowSequenceTags.length){
+            //Add time bonus and pause the countdown for the delay time
             timeRemaining += CORRECT_TIME_BONUS;
+            countDownPaused = true;
+
+            //Add completed stratagem to list
             completedStrategemsList.push(currentStratagem);
+
+            //Set a delay for when the timer should unpause and the next stratagem should be loaded
             setTimeout(() => {
                 currentSequenceIndex = 0;
                 loadNextStratagem();
+                countDownPaused = false;
             }, NEW_STRATEGEM_TIMEOUT);
         }
     }
@@ -287,8 +294,9 @@ async function countDown(){
         // console.log(timeRemaining)
     }, COUNTDOWN_STEP);
 
-    // Apply countdown
-    timeRemaining -= COUNTDOWN_STEP;
+    // Apply countdown if it's not paused
+    if(!countDownPaused)
+        timeRemaining -= COUNTDOWN_STEP;
     updateTimeBar();
 }
 

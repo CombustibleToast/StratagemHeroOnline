@@ -205,6 +205,7 @@ function gameOver(){
     stratagemReadout.innerHTML = stratagemListToString(true);
 
     // Show refresh arrow sequence
+    //b
     let sequence = ["Arrow_4_U.png", "Arrow_1_D.png", "Arrow_3_R.png", "Arrow_2_L.png", "Arrow_4_U.png"];
     let container = document.getElementById("refresh-arrows-container");
     refreshArrowSequenceTags = showArrowSequence(sequence, container);

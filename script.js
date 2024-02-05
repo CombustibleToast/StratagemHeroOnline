@@ -18,9 +18,9 @@ var sfxUp = new Audio("./Images/Sounds/4_U.mp3");
 
 // Create global tracking variables
 var gameIsRunning = true;
+var countDownPaused = false;
 const NEW_STRATEGEM_TIMEOUT = 200;
 var currentStratagem = undefined;
-var currentStratagemDone = true;
 var currentSequenceIndex = 0;
 var currentRefreshIndex = 0;
 var currentArrowSequenceTags = undefined;
@@ -147,8 +147,6 @@ function loadNextStratagem(){
 
     // Stratagem name
     document.getElementById("stratagem-name").innerHTML = currentStratagem.name;
-
-    currentStratagemDone = false;
 }
 
 function pickRandomStratagem(){

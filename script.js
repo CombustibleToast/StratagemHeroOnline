@@ -27,6 +27,7 @@ const TOTAL_TIME = 10000;
 const COUNTDOWN_STEP = 10;
 const NEW_STRATEGEM_TIMEOUT = 200;
 const CORRECT_TIME_BONUS = 500;
+const FAILURE_SHAKE_TIME = 200;
 var timeRemaining = TOTAL_TIME;
 var completedStrategemsList = [];
 const CURRENT_STRATAGEM_LIST_LENGTH = 4; //dependent on the html, don't change without modifying html too
@@ -111,13 +112,17 @@ function checkGameKeypress(keyCode, sfx){
     }
     else if (keyCode == currentArrowSequenceTags[0].code){
         //Edge case; if they're wrong but their input is the same as the first code, reset to first.
-        //TODO: play some kind of failure animation
         currentSequenceIndex = 1;
+
+        //Play failure animation
+        shakeArrows(FAILURE_SHAKE_TIME);
     }
     else{
         //Failure, reset progress
-        //TODO: play some kind of failure animation
         currentSequenceIndex = 0;
+
+        //Play failure animation
+        shakeArrows(FAILURE_SHAKE_TIME);
     }   
     updateArrowFilters(currentArrowSequenceTags, currentSequenceIndex);
 
@@ -148,6 +153,14 @@ function updateArrowFilters(arrowTags, index){
     for(i = 0; i < arrowTags.length; i++){
         arrowTags[i].setAttribute("class", i < index ? "arrow-complete-filter" : "arrow-incomplete-filter")
     }
+}
+
+function shakeArrows(time){
+    document.getElementById("arrows-container").setAttribute("style", `animation: shake ${time/1000}s;`);
+
+    setTimeout(() => {
+        document.getElementById("arrows-container").removeAttribute("style");
+    }, 200);
 }
 
 function refreshStratagemDisplay(){

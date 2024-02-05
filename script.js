@@ -1,6 +1,5 @@
 // Load stratagem data
 let stratagems = JSON.parse(data).list;
-console.log(stratagems);
 
 // Install keypress listener
 addEventListener("keydown", (event) => {
@@ -152,11 +151,9 @@ function updateArrowFilters(arrowTags, index){
 }
 
 function refreshStratagemDisplay(){
-    console.log(`Refreshing ${currentStratagemsList.length} strats`);
     for(let i in currentStratagemsList){
         // Show the stratagem's picture in the correct slot
-    console.log(`${currentStratagemsList[i]} .image is ${currentStratagemsList[i].image}`);
-    document.getElementById(`stratagem-icon-${i}`).src = `./Images/Stratagem\ Icons/${currentStratagemsList[i].image}`;
+        document.getElementById(`stratagem-icon-${i}`).src = `./Images/Stratagem\ Icons/${currentStratagemsList[i].image}`;
     }
 
     // Show arrow icons for the current active stratagem
@@ -262,7 +259,6 @@ function stratagemListToString(html){
             }
         }
         line += html ? "<br>" : "\n";
-        console.log(line);
         re += line;
     }
 

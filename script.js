@@ -257,9 +257,9 @@ function stratagemListToString(html){
 
 function copyShare(){
     // Gather text and write to clipboard
-    let output = `My Strategem Hero Online Score: ${completedStrategemsList.length}\n`
+    let output = `## My Stratagem Hero Online Score: ${completedStrategemsList.length}\n`
     output += stratagemListToString(false);
-    output += "Do your part! Try Strategem Hero Online here: https://combustibletoast.github.io/"
+    output += "Do your part! Play Stratagem Hero Online: https://combustibletoast.github.io/"
     navigator.clipboard.writeText(output);
 
     //Change button's text
@@ -269,7 +269,7 @@ function copyShare(){
 
     //Set timeout to change it back
     //Doesn't work, unable to pass in original text
-    setTimeout((buttonElement, buttonOriginalText) => {
+    setTimeout(() => {
         buttonElement.innerHTML = buttonOriginalText;
     }, 3000);
 }

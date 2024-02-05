@@ -122,9 +122,11 @@ function checkRefreshKeypress(keyCode, sfx){
         //Success, apply the success
         currentRefreshIndex++;
         
-        //Check if that success completes the entire sequence. 
+        //If that completes the entire sequence, reload the window after a short delay
         if(currentRefreshIndex == refreshArrowSequenceTags.length){
-            window.location.reload()
+            setTimeout(() => {
+                window.location.reload()
+            }, 300);
         }
     }
     updateArrowFilters(refreshArrowSequenceTags, currentRefreshIndex);
@@ -210,7 +212,6 @@ function gameOver(){
     stratagemReadout.innerHTML = stratagemListToString(true);
 
     // Show refresh arrow sequence
-    //b
     let sequence = ["Arrow_4_U.png", "Arrow_1_D.png", "Arrow_3_R.png", "Arrow_2_L.png", "Arrow_4_U.png"];
     let container = document.getElementById("refresh-arrows-container");
     refreshArrowSequenceTags = showArrowSequence(sequence, container);

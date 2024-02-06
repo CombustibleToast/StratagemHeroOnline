@@ -73,6 +73,8 @@ function keypress(keyCode){
             return;
     }
 
+    //b
+
     //Route keypress to proper handling function
     switch(gameState){
         case "initial":

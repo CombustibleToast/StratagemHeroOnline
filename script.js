@@ -32,6 +32,10 @@ var completedStrategemsList = [];
 const CURRENT_STRATAGEM_LIST_LENGTH = 4; //dependent on the html, don't change without modifying html too
 var currentStratagemsList = [];
 
+// Show directional buttons if user is on mobile
+if(userIsMobile())
+    showMobileButtons();
+
 // Load first stratagems
 for(let i = 0; i < CURRENT_STRATAGEM_LIST_LENGTH; i++){
     currentStratagemsList.push(pickRandomStratagem());
@@ -269,7 +273,7 @@ function stratagemListToString(html){
         for(let arrow of stratagem.sequence){
             switch(arrow){
                 case "Arrow_4_U.png":
-                    line += "🡅";
+                    line += "🡅"; //🡅🡇🡄🡆
                 break;
                 case "Arrow_1_D.png":
                     line += "🡇";
@@ -338,4 +342,21 @@ function updateTimeBar(){
 
 async function sleep(ms){
     await new Promise(r => setTimeout(r, ms));
+}
+
+function userIsMobile() {
+    return navigator.userAgent.match(/Android/i)
+    || navigator.userAgent.match(/webOS/i)
+    || navigator.userAgent.match(/iPhone/i)
+    || navigator.userAgent.match(/iPad/i)
+    || navigator.userAgent.match(/iPod/i)
+    || navigator.userAgent.match(/BlackBerry/i)
+    || navigator.userAgent.match(/Windows Phone/i);
+}
+
+function showMobileButtons() {
+    container = document.getElementById("mobile-button-container");
+    
+    container.removeAttribute("hidden");
+    container.style.visibility = "visible";
 }

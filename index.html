@@ -41,6 +41,7 @@
             font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
             width: 50%;
             margin: auto;
+            padding-top: 10px;
             text-align: center;
         }
 
@@ -129,14 +130,12 @@
         }
 
         .game-over-popup {
-            position: absolute;
+            margin: auto;
+            width: 20%;
             border-top-left-radius: 5%;
             border-bottom-right-radius: 5%;
             background-color: #5c5400;
             z-index: 10;
-            width: 40%;
-            height: 30%;
-            transform: translate(75%, -150%);
         }
 
         #completed-strategems-readout {
@@ -189,22 +188,18 @@
 </head>
 
 <body class="background">
-    <div class="interactable-center-container">
-        <div class="logo-container">
-            <img class="logo" src="./Images/Helldivers_2_logo.webp">
-        </div>
+    <div class="logo-container">
+        <img class="logo" src="./Images/Helldivers_2_logo.webp">
+    </div>
 
-        <h1 class="title">
-            STRATAGEM HERO ONLINE
-        </h1>
+    <h1 class="title">
+        STRATAGEM HERO ONLINE
+    </h1>
 
-        <br>
-
-        <div class="stratagem-name">
-            <h2 id="stratagem-name">
-                HI :) You shouldn't see this
-            </h2>
-        </div>
+    <div class="interactable-center-container" id="interactable-center-container">
+        <h2 class="stratagem-name" id="stratagem-name">
+            HI :) You shouldn't see this
+        </h2>
 
         <table class="stratagems-table" id="stratagems-table">
             <tr>
@@ -224,7 +219,6 @@
             </tr>
         </table>
 
-
         <div class="time-remaining-container">
             <div id="time-remaining-bar"></div>
         </div>
@@ -238,53 +232,39 @@
                     <td><button onclick="keypress('ArrowRight')" class="mobile-button">🡆</button></td>
                 </tr>
             </table>
-        </div>
-
-        <div class="info">
-            <p class="larger-info">
-                Check out Helldivers 2 on <a href="https://store.steampowered.com/app/553850/HELLDIVERS_2/" target="_blank">Steam</a> and <a href="https://www.playstation.com/en-us/games/helldivers-2/" target="_blank">Playstation</a>!<br>
-            </p>
-            Made with 💖 by <a href="https://github.com/CombustibleToast" target="_blank">CombustibleToast</a><br> 
-            View the source code <a href="https://github.com/CombustibleToast/StratagemHeroOnline" target="_blank">on Github</a><br>
-            Report an issue <a href="https://github.com/CombustibleToast/StratagemHeroOnline/issues" target="_blank">here</a><br>
-            Not affiliated with Helldivers, Arrowhead Studios, or Playstation Studios. Please don't sue me :)<br>
-        </div>
+        </div>  
     </div>
 
-        <div class="game-over-popup" id="game-over-popup" hidden="hidden">
-            <h1 class="title" id="score-readout">SCORE: ##</h1>
-            <p id="completed-strategems-readout">
+    <div class="game-over-popup" id="game-over-popup" hidden="hidden">
+        <h1 class="title" id="score-readout">SCORE: ##</h1>
+        <p id="completed-strategems-readout">
 
-            </p>
-            <button onclick="copyShare()" id="share-button">
-                Share your score!
-            </button>
-            <br>
-            <button onclick="window.location.reload()" id="refresh-button">
-                Reinforce! (Play Again)
-                <table class="arrows-table" id="refresh-arrows-container">
-                    <tr>
-                        <td><img class="arrow-image" src="Images/Arrows/Arrow_4_U.png"></td>
-                        <td><img class="arrow-image" src="Images/Arrows/Arrow_1_D.png"></td>
-                        <td><img class="arrow-image" src="Images/Arrows/Arrow_2_L.png"></td>
-                        <td><img class="arrow-image" src="Images/Arrows/Arrow_3_R.png"></td>
-                    </tr>
-                </table>
-            </button>
-        </div>
+        </p>
+        <button onclick="copyShare()" id="share-button">
+            Share your score!
+        </button>
+        <br>
+        <button onclick="window.location.reload()" id="refresh-button">
+            Reinforce! (Play Again)
+            <table class="arrows-table" id="refresh-arrows-container">
+                <tr>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_4_U.png"></td>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_1_D.png"></td>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_2_L.png"></td>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_3_R.png"></td>
+                </tr>
+            </table>
+        </button>
+    </div>
 
-
-
-
-        <div class="info">
-            <p class="larger-info">
-                Check out Helldivers 2 on <a href="https://store.steampowered.com/app/553850/HELLDIVERS_2/" target="_blank">Steam</a> and <a href="https://www.playstation.com/en-us/games/helldivers-2/" target="_blank">Playstation</a>!<br>
-            </p>
-            Made with 💖 by <a href="https://github.com/CombustibleToast" target="_blank">CombustibleToast</a><br> 
-            View the source code <a href="https://github.com/CombustibleToast/StratagemHeroOnline" target="_blank">on Github</a><br>
-            Report an issue <a href="https://github.com/CombustibleToast/StratagemHeroOnline/issues" target="_blank">here</a><br>
-            Not affiliated with Helldivers, Arrowhead Studios, or Playstation Studios. Please don't sue me :)<br>
-        </div>
+    <div class="info">
+        <p class="larger-info">
+            Check out Helldivers 2 on <a href="https://store.steampowered.com/app/553850/HELLDIVERS_2/" target="_blank">Steam</a> and <a href="https://www.playstation.com/en-us/games/helldivers-2/" target="_blank">Playstation</a>!<br>
+        </p>
+        Made with 💖 by <a href="https://github.com/CombustibleToast" target="_blank">CombustibleToast</a><br> 
+        View the source code <a href="https://github.com/CombustibleToast/StratagemHeroOnline" target="_blank">on Github</a><br>
+        Report an issue <a href="https://github.com/CombustibleToast/StratagemHeroOnline/issues" target="_blank">here</a><br>
+        Not affiliated with Helldivers, Arrowhead Studios, or Playstation Studios. Please don't sue me :)<br>
     </div>
 </body>
 

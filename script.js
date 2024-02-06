@@ -247,6 +247,11 @@ function gameOver(){
     refreshArrowSequenceTags = showArrowSequence(sequence, container);
     // console.log(`Refresh tags ${refreshArrowSequenceTags}`);
 
+    // Hide the game
+    let game = document.getElementById("interactable-center-container");
+    game.setAttribute("hidden", "hidden");
+    game.style.visibility = "invisible";
+
     // Show the popup
     let popup = document.getElementById("game-over-popup");
     popup.removeAttribute("hidden");

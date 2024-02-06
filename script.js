@@ -17,9 +17,7 @@ var sfxUp = new Audio("./Images/Sounds/4_U.mp3");
 var sfxGameOver = [new Audio("./Images/Sounds/GameOver1.mp3"), new Audio("./Images/Sounds/GameOver2.mp3")]
 
 // Create global tracking variables
-var gameIsRunning = true;
-var countDownPaused = false;
-var currentStratagem = undefined;
+var gameState = "initial" //initial, running, hitlag, over
 var currentSequenceIndex = 0;
 var currentRefreshIndex = 0;
 var currentArrowSequenceTags = undefined;
@@ -75,14 +73,20 @@ function keypress(keyCode){
             return;
     }
 
-    //If the game is running, apply its effects to the game
-    if(gameIsRunning)
-        checkGameKeypress(keyCode, sfx);
-
-    //If the restart screen is up, apply keypresses to the restart button
-    else
-        checkRefreshKeypress(keyCode, sfx);
-    
+    //Route keypress to proper handling function
+    switch(gameState){
+        case "initial":
+            gameState = "running";
+            // Exclusion of `break;` here is intentional. The first keypress of the game should apply to the sequence
+        case "running":
+            checkGameKeypress(keyCode, sfx);
+            break;
+        case "over":
+            checkRefreshKeypress(keyCode, sfx);
+            break;
+        case "hitlag":
+            break;
+    }
 }
 
 function checkGameKeypress(keyCode, sfx){
@@ -95,7 +99,7 @@ function checkGameKeypress(keyCode, sfx){
         if(currentSequenceIndex == currentArrowSequenceTags.length){
             //Add time bonus and pause the countdown for the delay time
             timeRemaining += CORRECT_TIME_BONUS;
-            countDownPaused = true;
+            gameState = "hitlag";
 
             //Add completed stratagem to completed list and remove from active list
             completedStrategemsList.push(currentStratagemsList.shift());
@@ -107,7 +111,7 @@ function checkGameKeypress(keyCode, sfx){
             setTimeout(() => {
                 currentSequenceIndex = 0;
                 refreshStratagemDisplay();
-                countDownPaused = false;
+                gameState = "running";
             }, NEW_STRATEGEM_TIMEOUT);
         }
     }
@@ -125,6 +129,7 @@ function checkGameKeypress(keyCode, sfx){
         //Play failure animation
         shakeArrows(FAILURE_SHAKE_TIME);
     }   
+
     updateArrowFilters(currentArrowSequenceTags, currentSequenceIndex);
 
     // Play/replay sound
@@ -220,7 +225,7 @@ function showArrowSequence(arrowSequence, arrowsContainer){
 
 function gameOver(){
     //Stop the game
-    gameIsRunning = false;
+    gameState = "over";
 
     // Write score to readout
     let scoreReadout = document.getElementById("score-readout");
@@ -302,7 +307,7 @@ function copyShare(){
 }
 
 async function countDown(){
-    if(!gameIsRunning)
+    if(gameState == "over")
         return;
 
     if(timeRemaining <= 0){
@@ -317,7 +322,7 @@ async function countDown(){
     }, COUNTDOWN_STEP);
 
     // Apply countdown if it's not paused
-    if(!countDownPaused)
+    if(gameState != "hitlag" && gameState != "initial")
         timeRemaining -= COUNTDOWN_STEP;
     updateTimeBar();
 }

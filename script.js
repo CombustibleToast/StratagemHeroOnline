@@ -329,8 +329,8 @@ async function countDown(){
 
     //Calculate the true delta time since last check
     //This should fix #2 
-    if(lastCheckedTime == Date.now)
-        lastCheckedTime
+    if(lastCheckedTime == undefined)
+        lastCheckedTime = Date.now();
     let now = Date.now();
     let trueDeltaT = now-lastCheckedTime;
     lastCheckedTime = now;

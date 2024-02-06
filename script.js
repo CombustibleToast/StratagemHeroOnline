@@ -31,6 +31,7 @@ var timeRemaining = TOTAL_TIME;
 var completedStrategemsList = [];
 const CURRENT_STRATAGEM_LIST_LENGTH = 4; //dependent on the html, don't change without modifying html too
 var currentStratagemsList = [];
+var lastCheckedTime = undefined;
 
 // Show directional buttons if user is on mobile
 if(userIsMobile())
@@ -326,6 +327,15 @@ async function countDown(){
         return;
     }
 
+    //Calculate the true delta time since last check
+    //This should fix #2
+    if(lastCheckedTime == Date.now)
+        lastCheckedTime
+    let now = Date.now();
+    let trueDeltaT = now-lastCheckedTime;
+    lastCheckedTime = now;
+    console.log(`True deltaT = ${trueDeltaT}`)
+
     // Immediately Set timeout for next countdown step
     setTimeout(() => {
         countDown();
@@ -334,7 +344,7 @@ async function countDown(){
 
     // Apply countdown if it's not paused
     if(gameState != "hitlag" && gameState != "initial")
-        timeRemaining -= COUNTDOWN_STEP;
+        timeRemaining -= trueDeltaT;
     updateTimeBar();
 }
 

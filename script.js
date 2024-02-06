@@ -14,6 +14,7 @@ var sfxDown = new Audio("./Images/Sounds/1_D.mp3");
 var sfxLeft = new Audio("./Images/Sounds/2_L.mp3");
 var sfxRight = new Audio("./Images/Sounds/3_R.mp3");
 var sfxUp = new Audio("./Images/Sounds/4_U.mp3");
+var sfxGameOver = [new Audio("./Images/Sounds/GameOver1.mp3"), new Audio("./Images/Sounds/GameOver2.mp3")]
 
 // Create global tracking variables
 var gameIsRunning = true;
@@ -239,6 +240,9 @@ function gameOver(){
     let popup = document.getElementById("game-over-popup");
     popup.removeAttribute("hidden");
     popup.style.visibility = "visible";
+
+    // Play game over sfx
+    sfxGameOver[Math.floor(Math.random() * sfxGameOver.length)].play();
 }
 
 function stratagemListToString(html){

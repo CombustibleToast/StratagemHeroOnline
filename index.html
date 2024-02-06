@@ -121,11 +121,12 @@
 
         .info {
             color: gray;
-            position: fixed;
+            position: absolute;
             bottom: 10px;
-            width: 100%;
+            width: 99%;
             text-align: center;
             font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            z-index: -1;
         }
 
         .larger-info {
@@ -139,6 +140,7 @@
             border-bottom-right-radius: 5%;
             background-color: #5c5400;
             z-index: 10;
+            padding-bottom: 20px;
         }
 
         #completed-strategems-readout {
@@ -240,9 +242,7 @@
 
     <div class="game-over-popup" id="game-over-popup" hidden="hidden">
         <h1 class="title" id="score-readout">SCORE: ##</h1>
-        <p id="completed-strategems-readout">
-
-        </p>
+        <p id="completed-strategems-readout"></p>
         <button onclick="copyShare()" id="share-button">
             Share your score!
         </button>

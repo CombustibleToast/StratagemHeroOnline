@@ -334,7 +334,6 @@ async function countDown(){
     let now = Date.now();
     let trueDeltaT = now-lastCheckedTime;
     lastCheckedTime = now;
-    console.log(`True deltaT = ${trueDeltaT}`)
 
     // Immediately Set timeout for next countdown step
     setTimeout(() => {

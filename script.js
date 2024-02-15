@@ -278,16 +278,20 @@ function stratagemListToString(html){
         for(let arrow of stratagem.sequence){
             switch(arrow){
                 case "Arrow_4_U.png":
-                    line += "🡅"; //🡅🡇🡄🡆
+                    // line += "🡅"; //🡅🡇🡄🡆
+                    line += "U"; //🡅🡇🡄🡆
                 break;
                 case "Arrow_1_D.png":
-                    line += "🡇";
+                    // line += "🡇";
+                    line += "D";
                 break;
                 case "Arrow_2_L.png":
-                    line += "🡄";
+                    // line += "🡄";
+                    line += "L";
                 break;
                 case "Arrow_3_R.png":
-                    line += "🡆";
+                    // line += "🡆";
+                    line += "R";
                 break;
             }
         }

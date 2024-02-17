@@ -278,7 +278,7 @@ function stratagemListToString(html){
         for(let arrow of stratagem.sequence){
             switch(arrow){
                 case "Arrow_4_U.png":
-                    line += "🡅"; //🡅🡇🡄🡆
+                    line += "🡅"; //🡅🡇🡄🡆 //b
                 break;
                 case "Arrow_1_D.png":
                     line += "🡇";

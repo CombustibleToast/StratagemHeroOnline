@@ -1,5 +1,13 @@
 // Load stratagem data
 let stratagems = JSON.parse(data).list;
+let gpPollInterval;
+const gpPollRate = 1000;
+const gpButtonToKeyMap = {
+    12: "KeyW", // Up
+    13: "KeyS", // Down
+    14: "KeyA", // Left
+    15: "KeyD"  // Right
+};
 
 // Install keypress listener
 addEventListener("keydown", (event) => {
@@ -8,6 +16,46 @@ addEventListener("keydown", (event) => {
     }
     keypress(event.code);
 });
+
+// Poll for gamepad connection
+gpPollInterval = setInterval(pollGamepads, gpPollRate);
+
+function pollGamepads() {
+    const gamepads = navigator.getGamepads();
+
+    // If any gamepad is connected, start the gamepad loop
+    if (gamepads[0] || gamepads[1] || gamepads[2] || gamepads[3]) {
+        gamepadLoop();
+        clearInterval(gpPollInterval);
+    }
+}
+
+
+// Gamepad input handling
+let prevButtons = new Array(16).fill(false);
+
+function gamepadLoop() {
+    const gamepads = navigator.getGamepads();
+    // Get the first non-null gamepad
+    const gp = gamepads[0] || gamepads[1] || gamepads[2] || gamepads[3];
+
+    if (!gp) {
+        return;
+    }
+
+    for (let i in gpButtonToKeyMap) {
+        if (gp.buttons[i].pressed && !prevButtons[i]) {
+            keypress(gpButtonToKeyMap[i]);
+        }
+    }
+
+    // Update previous buttons state
+    for (let i = 0; i < gp.buttons.length; i++) {
+        prevButtons[i] = gp.buttons[i].pressed;
+    }
+
+    requestAnimationFrame(gamepadLoop);
+}
 
 // Load SFX
 var sfxDown = new Audio("./Images/Sounds/1_D.mp3");

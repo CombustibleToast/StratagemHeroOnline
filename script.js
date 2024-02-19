@@ -1,13 +1,10 @@
 // Load stratagem data
-let stratagems = JSON.parse(data).list;
-let gpPollInterval;
-const gpPollRate = 1000;
-const gpButtonToKeyMap = {
-    12: "KeyW", // Up
-    13: "KeyS", // Down
-    14: "KeyA", // Left
-    15: "KeyD"  // Right
-};
+var stratagems = "asdf";
+// stratagems = JSON.parse('./data/HD2-Sequences.json');
+fetch('./data/HD2-Sequences.json')
+    .then((file) => stratagems = file.json());
+
+console.log(stratagems);
 
 // Install keypress listener
 addEventListener("keydown", (event) => {
@@ -16,6 +13,16 @@ addEventListener("keydown", (event) => {
     }
     keypress(event.code);
 });
+
+// Set gamepad polling
+let gpPollInterval;
+const gpPollRate = 1000;
+const gpButtonToKeyMap = {
+    12: "KeyW", // Up
+    13: "KeyS", // Down
+    14: "KeyA", // Left
+    15: "KeyD"  // Right
+};
 
 // Poll for gamepad connection
 gpPollInterval = setInterval(pollGamepads, gpPollRate);
@@ -29,7 +36,6 @@ function pollGamepads() {
         clearInterval(gpPollInterval);
     }
 }
-
 
 // Gamepad input handling
 let prevButtons = new Array(16).fill(false);

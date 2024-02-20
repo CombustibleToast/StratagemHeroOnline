@@ -2,17 +2,17 @@
   {
     "name": "Reinforcement",
     "sequence": "UDRLU",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659440/4EEA9F50CAE2CBDACB5A71CDFDE0381FB3155F13/"
+    "image": "reinforcement.png"
   },
   {
     "name": "Resupply",
     "sequence": "DDUR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659420/E25EA5FBE68DB6291A41300BABB1FEC5059EEE56/"
+    "image": "resupply.png"
   },
   {
     "name": "SOS Beacon",
     "sequence": "UDRU",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659426/9BA70D7AEEED8FA05A5CC3E8DC934CF55B873577/"
+    "image": "sos_beacon.png"
   },
   {
     "name": "SEAF Artillery",
@@ -22,7 +22,7 @@
   {
     "name": "Hellbomb",
     "sequence": "DULDURDU",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382293003354057/BA8DE43C9F2A2F57114255A74E0BC6EC9C4B48BE/"
+    "image": "hellbomb.png"
   },
   {
     "name": "Super Earth Flag",
@@ -32,241 +32,241 @@
   {
     "name": "Machine Gun",
     "sequence": "DLDUR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979658912/C6780E7E3EF7725A861DDE7CA287564876789993/"
+    "image": "machine_gun.png"
   },
   {
     "name": "Anti-Material Rifle",
     "sequence": "DLRUD",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979658924/8888483F30AD90726D014C6E0E774EE322D232A3/"
+    "image": "anti-material_rifle.png"
   },
   {
     "name": "Stalwart",
     "sequence": "DLDUUL",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979658933/5352BA36BA7C15E10D376781BA911E2CBF4FE80C/"
+    "image": "stalwart.png"
   },
   {
     "name": "Expendable Anti-Tank",
     "sequence": "DDLUR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979658992/454F51D73C804EF6B87865C8B1933933EC9B605F/"
+    "image": "expendable_anti-tank.png"
   },
   {
     "name": "Recoiless Rifle",
     "sequence": "DLRRL",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659006/A43070B0E37ADFA3A3E7A34DF80917E2094E145F/"
+    "image": "recoiless_rifle.png"
   },
   {
     "name": "Flamethrower",
     "sequence": "DLUDU",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659011/7030C0E9571495003AC159A48B8DF07798A643DB/"
+    "image": "flamethrower.png"
   },
   {
     "name": "Auto-Canon",
     "sequence": "DLDUUR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659029/341513D4FEB5B6C494A08E6B97D04705E491A386/"
+    "image": "auto-canon.png"
   },
   {
     "name": "Railgun",
     "sequence": "DRDULR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659035/544CD7C5B04599AAE86B14916E2A845AC41A0B67/"
+    "image": "railgun.png"
   },
   {
     "name": "Spear",
     "sequence": "DDUDD",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659042/FC6AFA2B95A26C22DD9776EF8F71CD84F9973272/"
+    "image": "spear.png"
   },
   {
     "name": "Orbital Gatling Barrage",
     "sequence": "RDLUU",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659060/C048CE42DB5A0F96185C94A12CEE725E88DF296E/"
+    "image": "orbital_gatling_barrage.png"
   },
   {
     "name": "Orbital Airburst Strike",
     "sequence": "RRR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659064/14CADBDA8707CDD1A24C7A28873123769CC3FC0F/"
+    "image": "orbital_airburst_strike.png"
   },
   {
     "name": "Orbital 120MM HE Barrage",
     "sequence": "RRDLRD",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659069/894A03566E9E187580A30125C4C1718B88158733/"
+    "image": "orbital_120mm_he_barrage.png"
   },
   {
     "name": "Orbital 380MM HE Barrage",
     "sequence": "RDUULDD",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659078/0C48AEE76E67F599BACAD669F620E1E646D0D2FD/"
+    "image": "orbital_380mm_he_barrage.png"
   },
   {
     "name": "Orbital Walking Barrage",
     "sequence": "RDRDRD",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659099/AA8917EEA49E2F930C41DCA48D162D2EE2AD6F6A/"
+    "image": "orbital_walking_barrage.png"
   },
   {
     "name": "Orbital Laser",
     "sequence": "RDURD",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659108/BD3C20A2D34D40A6BEB6A49D1E174517771D8293/"
+    "image": "orbital_laser.png"
   },
   {
     "name": "Orbital Railgun Strike",
     "sequence": "RUDDR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659126/31514EE89DD636825D58B64F5EE982E146040004/"
+    "image": "orbital_railgun_strike.png"
   },
   {
     "name": "Eagle Straffing Run",
     "sequence": "URR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659139/9106102211F5E3B12663B5632062B7CCF54D556D/"
+    "image": "eagle_straffing_run.png"
   },
   {
     "name": "Eagle Airstrike",
     "sequence": "URDR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659150/A113428F9B062B96925BDFF125C838C5432DE508/"
+    "image": "eagle_airstrike.png"
   },
   {
     "name": "Eagle Cluster Bomb",
     "sequence": "URDDR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659154/C6C8186A827E5EAE0484C141C35F5ACE8D626897/"
+    "image": "eagle_cluster_bomb.png"
   },
   {
     "name": "Eagle Napalm Strike",
     "sequence": "URDU",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659167/29AEE6F7F7BD5432DEF3C93BC81B729D1B1D1195/"
+    "image": "eagle_napalm_strike.png"
   },
   {
     "name": "Jump Pack",
     "sequence": "DUUDU",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659175/B0AA61F297ECA1FE24AF0200A5AB2D275235172A/"
+    "image": "jump_pack.png"
   },
   {
     "name": "Eagle Smoke Strike",
     "sequence": "URDU",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659179/03D4E880E6BF7D415FBC647096885B54F3560D06/"
+    "image": "eagle_smoke_strike.png"
   },
   {
     "name": "Eagle 110MM Rocket Pods",
     "sequence": "URUL",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659190/B079900C49E017289EFB70E38B8EAD7DCFF461A4/"
+    "image": "eagle_110mm_rocket_pods.png"
   },
   {
     "name": "Eagle 500KG Bomb",
     "sequence": "URDDD",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659198/67B74365421CEA30557BD1BC457CB7D25374B207/"
+    "image": "eagle_500kg_bomb.png"
   },
   {
     "name": "Eagle Rearm",
     "sequence": "UULUR",
-    "image": null
+    "image": "eagle_rearm.png"
   },
   {
     "name": "Orbital Precision Strike",
     "sequence": "RRU",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659228/CDC385D48A1018F8BC96DF2BABEAE948257DB523/"
+    "image": "orbital_precision_strike.png"
   },
   {
     "name": "Orbital Gas Strike",
     "sequence": "RRDR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659242/7696FD8F981D7D7E56AA7ADB4494897180B83427/"
+    "image": "orbital_gas_strike.png"
   },
   {
     "name": "Orbital EMS Strike",
     "sequence": "RRLD",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659256/7669B324456C754AD3DB2067E77EA67E8E5423C0/"
+    "image": "orbital_ems_strike.png"
   },
   {
     "name": "Orbital Smoke Strike",
     "sequence": "RRDU",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659262/1869F61BB24898CC057B53C4CB84ABF7E3093C58/"
+    "image": "orbital_smoke_strike.png"
   },
   {
-    "name": "HMG Placement",
+    "name": "HMG Emplacement",
     "sequence": "DULRRL",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659268/C44FCC3B7BF91EE9D1464AA77F0CB50F7CCACD2F/"
+    "image": "hmg_emplacement.png"
   },
   {
     "name": "Shield Generator",
     "sequence": "DDLRLR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659274/EAD49892D8BF6B73C3ECCDA028C66EE1581B6F12/"
+    "image": "shield_generator.png"
   },
   {
     "name": "Tesla Tower",
     "sequence": "DURULR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659283/6B9AF006D9062E7907F8E8DB9EA048DEF1DF57E7/"
+    "image": "tesla_tower.png"
   },
   {
     "name": "Anti-Personnel Minefield",
     "sequence": "DLUR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659295/D119A16C330A2B44E9B5E728FF2950E3FC0C3A0D/"
+    "image": "anti-personnel_minefield.png"
   },
   {
     "name": "Supply Pack",
     "sequence": "DLDUUD",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659307/1CB69C49DA55797DAEFA494BF55A431D1126B4FB/"
+    "image": "supply_pack.png"
   },
   {
     "name": "Grenade Launcher",
     "sequence": "DLULD",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659316/B762ED55372B8CC933C7977A60501AFCB5C5685D/"
+    "image": "grenade_launcher.png"
   },
   {
     "name": "Laser Canon",
     "sequence": "DLDUL",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659319/4609132E03AC8FCC13B8C356265A6E9F8211920A/"
+    "image": "laser_canon.png"
   },
   {
     "name": "Incendiary Mines",
     "sequence": "DLLD",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659326/A3FACD043040310A797DF50A7548DC3EDA6EEE72/"
+    "image": "incendiary_mines.png"
   },
   {
     "name": "Guard Dog Rover",
     "sequence": "UDLURR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659334/5F792F26C1BC3F17C2F9F45462EA83CDEFFEBC73/"
+    "image": "guard_dog_rover.png"
   },
   {
     "name": "Balistic Shield",
     "sequence": "DLDDUL",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659343/39B041C552917393A33CEE32BB7E4BCFD67194D9/"
+    "image": "balistic_shield.png"
   },
   {
     "name": "Arc Thrower",
     "sequence": "DRDULL",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659363/D976855B0BCDC623FFDA249490C24C9EE634F6CB/"
+    "image": "arc_thrower.png"
   },
   {
     "name": "Shield Generator Pack",
     "sequence": "DULRLR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659370/760DE8B213BBE61259CE194FD3997B6D1AB22CD4/"
+    "image": "shield_generator_pack.png"
   },
   {
     "name": "Machine Gun Sentry",
     "sequence": "DURRU",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659375/ABAA3025BBB48E814A19237AA447A17DEB1C98AB/"
+    "image": "machine_gun_sentry.png"
   },
   {
     "name": "Gatling Sentry",
     "sequence": "DURL",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659380/3B5B532E8F3E5C75C1602452B898EC1937D19E54/"
+    "image": "gatling_sentry.png"
   },
   {
     "name": "Mortar Sentry",
     "sequence": "DURRD",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659416/F28CE48798376AA722380E3A184C0C4952956943/"
+    "image": "mortar_sentry.png"
   },
   {
     "name": "Guard Dog",
     "sequence": "DULURD",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659389/D098656018679A46BF1069A0F6AA761DC23D83D6/"
+    "image": "guard_dog.png"
   },
   {
     "name": "Autocanon Sentry",
     "sequence": "DURULU",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659399/6EB483D6C35F11EE9B4C5DC36CC75C0D6C74F67D/"
+    "image": "autocanon_sentry.png"
   },
   {
     "name": "Rocket Sentry",
     "sequence": "DURRL",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659408/922D90F493CB8C03FE8607A393A41C9B1C68ED83/"
+    "image": "rocket_sentry.png"
   },
   {
     "name": "EMS Mortar Sentry",
     "sequence": "DURDR",
-    "image": "https://steamuserimages-a.akamaihd.net/ugc/2502382292979659416/F28CE48798376AA722380E3A184C0C4952956943/"
+    "image": "ems_mortar_sentry.png"
   }
 ]

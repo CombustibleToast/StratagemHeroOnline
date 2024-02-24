@@ -309,33 +309,31 @@ function gameOver(){
     sfxGameOver[Math.floor(Math.random() * sfxGameOver.length)].play();
 }
 
-function stratagemListToString(html){
-    // const TOTAL_PADDING = 50;
+function stratagemListToString(html, spamless){
+    // Set direction characters
+    let up = "🡅", down = "🡇", left = "🡄", right = "🡆";
+    if(spamless){
+        up = "U", down = "D", left = "L", right = "R";
+    }
+
     let re = "";
     for(let stratagem of completedStrategemsList){
         let line = `${stratagem.name}: `;
-        
-        //Put padding spaces
-        // console.log(`i ${line.length}`)
-        // for(let i = line.length; i < TOTAL_PADDING; i++){
-        //     line += " ";
-        //     console.log(`put space: ${line}.`)
-        // }
 
         //Put arrows
         for(let arrow of stratagem.sequence){
             switch(arrow){
                 case "Arrow_4_U.png":
-                    line += "🡅"; //🡅🡇🡄🡆 //b
+                    line += up; 
                 break;
                 case "Arrow_1_D.png":
-                    line += "🡇";
+                    line += down;
                 break;
                 case "Arrow_2_L.png":
-                    line += "🡄";
+                    line += left;
                 break;
                 case "Arrow_3_R.png":
-                    line += "🡆";
+                    line += right;
                 break;
             }
         }
@@ -346,15 +344,15 @@ function stratagemListToString(html){
     return re;
 }
 
-function copyShare(){
+function copyShare(spamless){
     // Gather text and write to clipboard
     let output = `## My Stratagem Hero Online Score: ${completedStrategemsList.length}\n`
-    output += stratagemListToString(false);
+    output += stratagemListToString(false, spamless);
     output += "Do your part! Play Stratagem Hero Online: https://combustibletoast.github.io/"
     navigator.clipboard.writeText(output);
 
     //Change button's text
-    let buttonElement = document.getElementById("share-button");
+    let buttonElement = document.getElementById(`share-button${spamless ? "-spamless" : ""}`);
     let buttonOriginalText = buttonElement.innerHTML;
     buttonElement.innerHTML = "Copied!";
 

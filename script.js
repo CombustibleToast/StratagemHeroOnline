@@ -1,8 +1,8 @@
 // Load stratagem data
-var stratagems = "asdf";
+var stratagems = undefined;
 
 var xhr = new XMLHttpRequest();
-xhr.open('GET', './data/HD2-Sequences.json', false); // false indicates synchronous request
+xhr.open(method='GET', url='./data/HD2-Sequences.json', async=false); // false indicates synchronous request
 xhr.send();
 
 if (xhr.status === 200) {
@@ -12,7 +12,7 @@ if (xhr.status === 200) {
 }
 
 stratagems = JSON.parse(stratagems);
-console.log(stratagems);
+// console.log(stratagems);
 
 // Install keypress listener
 addEventListener("keydown", (event) => {
@@ -323,8 +323,13 @@ function gameOver(){
     sfxGameOver[Math.floor(Math.random() * sfxGameOver.length)].play();
 }
 
-function stratagemListToString(html){
-    // const TOTAL_PADDING = 50;
+function stratagemListToString(html, spamless){
+    // Set direction characters based on argument
+    let up = "🡅", down = "🡇", left = "🡄", right = "🡆";
+    if(spamless){
+        up = "U", down = "D", left = "L", right = "R";
+    }
+
     let re = "";
     for(let stratagem of completedStrategemsList){
         let line = `${stratagem.name}: `;
@@ -337,19 +342,19 @@ function stratagemListToString(html){
         // }
 
         //Put arrows
-        for(let arrow of stratagem.sequence){
-            switch(arrow){
-                case "U.png":
-                    line += "🡅"; //🡅🡇🡄🡆 //b
+        for(let direction of stratagem.sequence){
+            switch(direction){
+                case "U":
+                    line += up; 
                 break;
-                case "D.png":
-                    line += "🡇";
+                case "D":
+                    line += down;
                 break;
-                case "L.png":
-                    line += "🡄";
+                case "L":
+                    line += left;
                 break;
-                case "R.png":
-                    line += "🡆";
+                case "R":
+                    line += right;
                 break;
             }
         }
@@ -360,15 +365,15 @@ function stratagemListToString(html){
     return re;
 }
 
-function copyShare(){
+function copyShare(spamless){
     // Gather text and write to clipboard
     let output = `## My Stratagem Hero Online Score: ${completedStrategemsList.length}\n`
-    output += stratagemListToString(false);
+    output += stratagemListToString(false, spamless);
     output += "Do your part! Play Stratagem Hero Online: https://combustibletoast.github.io/"
     navigator.clipboard.writeText(output);
 
     //Change button's text
-    let buttonElement = document.getElementById("share-button");
+    let buttonElement = document.getElementById(`share-button${spamless ? "-spamless" : ""}`);
     let buttonOriginalText = buttonElement.innerHTML;
     buttonElement.innerHTML = "Copied!";
 

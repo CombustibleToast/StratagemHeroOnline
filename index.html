@@ -56,6 +56,7 @@
         .stratagem-icon {
             display: block;
             margin: auto;
+            width: 3.2em;
         }
 
         #stratagem-icon-0 {
@@ -162,6 +163,19 @@
             margin: auto;
         }
 
+        #share-button-spamless {
+            background-color: #ad9f00;
+            border: 1px white;
+            color: #FFE900;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1em;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin: auto;
+        }
+
         #refresh-button {
             background-color: #ad9f00;
             border: 1px white;
@@ -243,9 +257,19 @@
     <div class="game-over-popup" id="game-over-popup" hidden="hidden">
         <h1 class="title" id="score-readout">SCORE: ##</h1>
         <p id="completed-strategems-readout"></p>
-        <button onclick="copyShare()" id="share-button">
-            Share your score!
-        </button>
+        <div>
+            
+            <button onclick="copyShare()" id="share-button">
+                Share your score!
+            </button>
+
+            <br>
+            
+            <button onclick="copyShare(true)" id="share-button-spamless">
+                Spam Filter Compatible Share
+            </button>
+
+        </div>
         <br>
         <button onclick="window.location.reload()" id="refresh-button">
             Reinforce! (Play Again)

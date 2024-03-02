@@ -1,9 +1,17 @@
 // Load stratagem data
-//var stratagems = "asdf";
-var stratagems = JSON.parse('./data/HD2-Sequences.json');
-fetch('./data/HD2-Sequences.json')
-    .then((file) => stratagems = file.json());
+var stratagems = "asdf";
 
+var xhr = new XMLHttpRequest();
+xhr.open('GET', './data/HD2-Sequences.json', false); // false indicates synchronous request
+xhr.send();
+
+if (xhr.status === 200) {
+    stratagems = xhr.responseText;
+} else {
+    console.error('Error reading file:', xhr.statusText);
+}
+
+stratagems = JSON.parse(stratagems);
 console.log(stratagems);
 
 // Install keypress listener

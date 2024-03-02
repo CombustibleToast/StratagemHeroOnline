@@ -50,9 +50,9 @@
     "image": "expendable_anti-tank.png"
   },
   {
-    "name": "Recoiless Rifle",
+    "name": "Recoilless Rifle",
     "sequence": "DLRRL",
-    "image": "recoiless_rifle.png"
+    "image": "recoilless_rifle.png"
   },
   {
     "name": "Flamethrower",
@@ -60,9 +60,9 @@
     "image": "flamethrower.png"
   },
   {
-    "name": "Auto-Canon",
+    "name": "Auto-Cannon",
     "sequence": "DLDUUR",
-    "image": "auto-canon.png"
+    "image": "auto-cannon.png"
   },
   {
     "name": "Railgun",
@@ -110,9 +110,9 @@
     "image": "orbital_railgun_strike.png"
   },
   {
-    "name": "Eagle Straffing Run",
+    "name": "Eagle Strafing Run",
     "sequence": "URR",
-    "image": "eagle_straffing_run.png"
+    "image": "eagle_strafing_run.png"
   },
   {
     "name": "Eagle Airstrike",
@@ -205,9 +205,9 @@
     "image": "grenade_launcher.png"
   },
   {
-    "name": "Laser Canon",
+    "name": "Laser Cannon",
     "sequence": "DLDUL",
-    "image": "laser_canon.png"
+    "image": "laser_cannon.png"
   },
   {
     "name": "Incendiary Mines",
@@ -220,9 +220,9 @@
     "image": "guard_dog_rover.png"
   },
   {
-    "name": "Balistic Shield",
+    "name": "Ballistic Shield",
     "sequence": "DLDDUL",
-    "image": "balistic_shield.png"
+    "image": "ballistic_shield.png"
   },
   {
     "name": "Arc Thrower",
@@ -255,9 +255,9 @@
     "image": "guard_dog.png"
   },
   {
-    "name": "Autocanon Sentry",
+    "name": "Autocannon Sentry",
     "sequence": "DURULU",
-    "image": "autocanon_sentry.png"
+    "image": "autocannon_sentry.png"
   },
   {
     "name": "Rocket Sentry",

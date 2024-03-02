@@ -1,9 +1,17 @@
 // Load stratagem data
 var stratagems = "asdf";
-// stratagems = JSON.parse('./data/HD2-Sequences.json');
-fetch('./data/HD2-Sequences.json')
-    .then((file) => stratagems = file.json());
 
+var xhr = new XMLHttpRequest();
+xhr.open('GET', './data/HD2-Sequences.json', false); // false indicates synchronous request
+xhr.send();
+
+if (xhr.status === 200) {
+    stratagems = xhr.responseText;
+} else {
+    console.error('Error reading file:', xhr.statusText);
+}
+
+stratagems = JSON.parse(stratagems);
 console.log(stratagems);
 
 // Install keypress listener
@@ -233,7 +241,7 @@ function shakeArrows(time){
 function refreshStratagemDisplay(){
     for(let i in currentStratagemsList){
         // Show the stratagem's picture in the correct slot
-        document.getElementById(`stratagem-icon-${i}`).src = `./Images/Stratagem\ Icons/${currentStratagemsList[i].image}`;
+        document.getElementById(`stratagem-icon-${i}`).src = `./Images/Stratagem\ Icons/hd2/${currentStratagemsList[i].image}`;
     }
 
     // Show arrow icons for the current active stratagem
@@ -260,21 +268,21 @@ function showArrowSequence(arrowSequence, arrowsContainer){
         let td = document.createElement("td");
         let img = document.createElement("img");
         td.appendChild(img);
-        img.setAttribute("src", `./Images/Arrows/${arrow}`);
+        img.setAttribute("src", `./Images/Arrows/${arrow}.png`);
         img.setAttribute("class", `arrow-incomplete-filter`);
 
         // Map filename to keycode
         switch(arrow){
-            case "Arrow_4_U.png":
+            case "U":
                 img.code = "KeyW";
             break;
-            case "Arrow_1_D.png":
+            case "D":
                 img.code = "KeyS";
             break;
-            case "Arrow_2_L.png":
+            case "L":
                 img.code = "KeyA";
             break;
-            case "Arrow_3_R.png":
+            case "R":
                 img.code = "KeyD";
             break;
         }
@@ -297,7 +305,7 @@ function gameOver(){
     stratagemReadout.innerHTML = stratagemListToString(true);
 
     // Show refresh arrow sequence
-    let sequence = ["Arrow_4_U.png", "Arrow_1_D.png", "Arrow_3_R.png", "Arrow_2_L.png", "Arrow_4_U.png"];
+    let sequence = ["U", "D", "R", "L", "U"];
     let container = document.getElementById("refresh-arrows-container");
     refreshArrowSequenceTags = showArrowSequence(sequence, container);
 
@@ -331,16 +339,16 @@ function stratagemListToString(html){
         //Put arrows
         for(let arrow of stratagem.sequence){
             switch(arrow){
-                case "Arrow_4_U.png":
+                case "U.png":
                     line += "🡅"; //🡅🡇🡄🡆 //b
                 break;
-                case "Arrow_1_D.png":
+                case "D.png":
                     line += "🡇";
                 break;
-                case "Arrow_2_L.png":
+                case "L.png":
                     line += "🡄";
                 break;
-                case "Arrow_3_R.png":
+                case "R.png":
                     line += "🡆";
                 break;
             }

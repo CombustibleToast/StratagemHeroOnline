@@ -40,9 +40,9 @@
     "image": "machine_gun.png"
   },
   {
-    "name": "Anti-Material Rifle",
+    "name": "Anti-Materiel Rifle",
     "sequence": "DLRUD",
-    "image": "anti-material_rifle.png"
+    "image": "anti-materiel_rifle.png"
   },
   {
     "name": "Stalwart",

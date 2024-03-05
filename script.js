@@ -241,7 +241,9 @@ function shakeArrows(time){
 function refreshStratagemDisplay(){
     for(let i in currentStratagemsList){
         // Show the stratagem's picture in the correct slot
-        document.getElementById(`stratagem-icon-${i}`).src = `./Images/Stratagem\ Icons/hd2/${currentStratagemsList[i].image}`;
+        if (currentStratagemsList[i].image) {
+            document.getElementById(`stratagem-icon-${i}`).src = `./Images/Stratagem\ Icons/hd2/${currentStratagemsList[i].image}`;
+        }
     }
 
     // Show arrow icons for the current active stratagem

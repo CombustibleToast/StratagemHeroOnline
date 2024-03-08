@@ -25,6 +25,11 @@
     "image": "hellbomb.png"
   },
   {
+    "name": "Prospecting Drill",
+    "sequence": "DDLRDD",
+    "image": "prospecting_drill.png"
+  },
+  {
     "name": "Super Earth Flag",
     "sequence": "DUDU",
     "image": null
@@ -35,9 +40,9 @@
     "image": "machine_gun.png"
   },
   {
-    "name": "Anti-Material Rifle",
+    "name": "Anti-Materiel Rifle",
     "sequence": "DLRUD",
-    "image": "anti-material_rifle.png"
+    "image": "anti-materiel_rifle.png"
   },
   {
     "name": "Stalwart",
@@ -136,7 +141,7 @@
   },
   {
     "name": "Eagle Smoke Strike",
-    "sequence": "URDU",
+    "sequence": "URUD",
     "image": "eagle_smoke_strike.png"
   },
   {
@@ -216,7 +221,7 @@
   },
   {
     "name": "Guard Dog Rover",
-    "sequence": "UDLURR",
+    "sequence": "DULURR",
     "image": "guard_dog_rover.png"
   },
   {

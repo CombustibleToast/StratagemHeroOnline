@@ -1,13 +1,18 @@
 // Load stratagem data
-let stratagems = JSON.parse(data).list;
-let gpPollInterval;
-const gpPollRate = 1000;
-const gpButtonToKeyMap = {
-    12: "KeyW", // Up
-    13: "KeyS", // Down
-    14: "KeyA", // Left
-    15: "KeyD"  // Right
-};
+var stratagems = undefined;
+
+var xhr = new XMLHttpRequest();
+xhr.open(method='GET', url='./data/HD2-Sequences.json', async=false); // false indicates synchronous request
+xhr.send();
+
+if (xhr.status === 200) {
+    stratagems = xhr.responseText;
+} else {
+    console.error('Error reading file:', xhr.statusText);
+}
+
+stratagems = JSON.parse(stratagems);
+// console.log(stratagems);
 
 // Install keypress listener
 addEventListener("keydown", (event) => {
@@ -16,6 +21,16 @@ addEventListener("keydown", (event) => {
     }
     keypress(event.code);
 });
+
+// Set gamepad polling
+let gpPollInterval;
+const gpPollRate = 1000;
+const gpButtonToKeyMap = {
+    12: "KeyW", // Up
+    13: "KeyS", // Down
+    14: "KeyA", // Left
+    15: "KeyD"  // Right
+};
 
 // Poll for gamepad connection
 gpPollInterval = setInterval(pollGamepads, gpPollRate);
@@ -29,7 +44,6 @@ function pollGamepads() {
         clearInterval(gpPollInterval);
     }
 }
-
 
 // Gamepad input handling
 let prevButtons = new Array(16).fill(false);
@@ -58,11 +72,11 @@ function gamepadLoop() {
 }
 
 // Load SFX
-var sfxDown = new Audio("./Images/Sounds/1_D.mp3");
-var sfxLeft = new Audio("./Images/Sounds/2_L.mp3");
-var sfxRight = new Audio("./Images/Sounds/3_R.mp3");
-var sfxUp = new Audio("./Images/Sounds/4_U.mp3");
-var sfxGameOver = [new Audio("./Images/Sounds/GameOver1.mp3"), new Audio("./Images/Sounds/GameOver2.mp3")]
+var sfxDown = new Audio("./data/Sounds/1_D.mp3");
+var sfxLeft = new Audio("./data/Sounds/2_L.mp3");
+var sfxRight = new Audio("./data/Sounds/3_R.mp3");
+var sfxUp = new Audio("./data/Sounds/4_U.mp3");
+var sfxGameOver = [new Audio("./data/Sounds/GameOver1.mp3"), new Audio("./data/Sounds/GameOver2.mp3")]
 
 // Create global tracking variables
 var gameState = "initial" //initial, running, hitlag, over
@@ -227,7 +241,9 @@ function shakeArrows(time){
 function refreshStratagemDisplay(){
     for(let i in currentStratagemsList){
         // Show the stratagem's picture in the correct slot
-        document.getElementById(`stratagem-icon-${i}`).src = `./Images/Stratagem\ Icons/${currentStratagemsList[i].image}`;
+        if (currentStratagemsList[i].image) {
+            document.getElementById(`stratagem-icon-${i}`).src = `./data/Images/Stratagem\ Icons/hd2/${currentStratagemsList[i].image}`;
+        }
     }
 
     // Show arrow icons for the current active stratagem
@@ -254,21 +270,21 @@ function showArrowSequence(arrowSequence, arrowsContainer){
         let td = document.createElement("td");
         let img = document.createElement("img");
         td.appendChild(img);
-        img.setAttribute("src", `./Images/Arrows/${arrow}`);
+        img.setAttribute("src", `./data/Images/Arrows/${arrow}.png`);
         img.setAttribute("class", `arrow-incomplete-filter`);
 
         // Map filename to keycode
         switch(arrow){
-            case "Arrow_4_U.png":
+            case "U":
                 img.code = "KeyW";
             break;
-            case "Arrow_1_D.png":
+            case "D":
                 img.code = "KeyS";
             break;
-            case "Arrow_2_L.png":
+            case "L":
                 img.code = "KeyA";
             break;
-            case "Arrow_3_R.png":
+            case "R":
                 img.code = "KeyD";
             break;
         }
@@ -291,7 +307,7 @@ function gameOver(){
     stratagemReadout.innerHTML = stratagemListToString(true);
 
     // Show refresh arrow sequence
-    let sequence = ["Arrow_4_U.png", "Arrow_1_D.png", "Arrow_3_R.png", "Arrow_2_L.png", "Arrow_4_U.png"];
+    let sequence = ["U", "D", "R", "L", "U"];
     let container = document.getElementById("refresh-arrows-container");
     refreshArrowSequenceTags = showArrowSequence(sequence, container);
 
@@ -310,7 +326,7 @@ function gameOver(){
 }
 
 function stratagemListToString(html, spamless){
-    // Set direction characters
+    // Set direction characters based on argument
     let up = "🡅", down = "🡇", left = "🡄", right = "🡆";
     if(spamless){
         up = "U", down = "D", left = "L", right = "R";
@@ -321,18 +337,18 @@ function stratagemListToString(html, spamless){
         let line = `${stratagem.name}: `;
 
         //Put arrows
-        for(let arrow of stratagem.sequence){
-            switch(arrow){
-                case "Arrow_4_U.png":
+        for(let direction of stratagem.sequence){
+            switch(direction){
+                case "U":
                     line += up; 
                 break;
-                case "Arrow_1_D.png":
+                case "D":
                     line += down;
                 break;
-                case "Arrow_2_L.png":
+                case "L":
                     line += left;
                 break;
-                case "Arrow_3_R.png":
+                case "R":
                     line += right;
                 break;
             }

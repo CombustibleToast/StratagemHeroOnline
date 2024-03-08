@@ -1,0 +1,275 @@
+<!DOCTYPE HTML>
+
+<head>
+    <title> Stratagem Hero Online</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico?">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxanium">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Verdana">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Geneva">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tahoma">
+    <meta charset="UTF-8">
+    <style>
+        body {
+            width: 99%;
+            height: 100%;
+        }
+
+        .interactable-center-container {
+            top: 50%;
+            margin: auto;
+            width: 100%;
+        }
+
+        .logo-container {
+            margin: auto;
+            width: 50%;
+        }
+
+        .logo {
+            margin: auto;
+            width: 100%;
+        }
+
+        .title {
+            color: #FFE900;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            width: 50%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .stratagem-name {
+            color: white;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            width: 50%;
+            margin: auto;
+            padding-top: 10px;
+            text-align: center;
+        }
+
+        .stratagems-table {
+            margin-left: 47.8%;
+            align-items: center;
+        }
+
+        .stratagem-icon {
+            display: block;
+            margin: auto;
+        }
+
+        #stratagem-icon-0 {
+            opacity: 100%;
+        }
+
+        #stratagem-icon-1 {
+            opacity: 50%;
+        }
+
+        #stratagem-icon-2 {
+            opacity: 25%;
+        }
+
+        #stratagem-icon-3 {
+            opacity: 12.5%;
+        }
+
+        .arrows-table {
+            margin: auto;
+            align-items: center;
+        }
+
+        .arrow-image {
+            margin: auto;
+        }
+
+        .arrow-incomplete-filter {
+            filter: brightness(0.25);
+        }
+
+        .time-remaining-container {
+            width: 50%;
+            background-color: black;
+            margin: auto;
+        }
+
+        #time-remaining-bar {
+            height: 20px;
+            background-color: #FFE900;
+            margin: auto;
+        }
+
+        #mobile-button-container {
+            margin-top: 1%;
+        }
+
+        .mobile-button {
+            background-color: #3b3600;
+            color: #645c00;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 5em;
+            padding: 0px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin: auto;
+        }
+
+        .background {
+            background-color: black;
+        }
+
+        .info {
+            color: gray;
+            position: absolute;
+            bottom: 10px;
+            width: 99%;
+            text-align: center;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            z-index: -1;
+        }
+
+        .larger-info {
+            font-size: 2em;
+        }
+
+        .game-over-popup {
+            margin: auto;
+            width: 40%;
+            border-top-left-radius: 5%;
+            border-bottom-right-radius: 5%;
+            background-color: #5c5400;
+            z-index: 10;
+            padding-bottom: 20px;
+        }
+
+        #completed-strategems-readout {
+            color: #FFE900;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            text-align: left;
+        }
+
+        #share-button {
+            background-color: #ad9f00;
+            border: 1px white;
+            color: #FFE900;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 2em;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin: auto;
+        }
+
+        #refresh-button {
+            background-color: #ad9f00;
+            border: 1px white;
+            color: #FFE900;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1.7em;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin: auto;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+    </style>
+</head>
+
+<body class="background">
+    <div class="logo-container">
+        <img class="logo" src="./Images/Logo-Helldivers.webp">
+    </div>
+
+    <h1 class="title">
+        STRATAGEM HERO ONLINE
+    </h1>
+
+    <div class="interactable-center-container" id="interactable-center-container">
+        <h2 class="stratagem-name" id="stratagem-name">
+            HI :) You shouldn't see this
+        </h2>
+
+        <table class="stratagems-table" id="stratagems-table">
+            <tr>
+                <td><img class="stratagem-icon" id="stratagem-icon-0" src="Images/stratagem Icons/Strat Resupply mk1.png"></td>
+                <td><img class="stratagem-icon" id="stratagem-icon-1" src="Images/stratagem Icons/Strat Resupply mk1.png"></td>
+                <td><img class="stratagem-icon" id="stratagem-icon-2" src="Images/stratagem Icons/Strat Resupply mk1.png"></td>
+                <td><img class="stratagem-icon" id="stratagem-icon-3" src="Images/stratagem Icons/Strat Resupply mk1.png"></td>
+            </tr>
+        </table>
+
+        <table class="arrows-table" id="arrows-container">
+            <tr>
+                <td><img class="arrow-image" src="Images/Arrows/Arrow_4_U.png"></td>
+                <td><img class="arrow-image" src="Images/Arrows/Arrow_1_D.png"></td>
+                <td><img class="arrow-image" src="Images/Arrows/Arrow_2_L.png"></td>
+                <td><img class="arrow-image" src="Images/Arrows/Arrow_3_R.png"></td>
+            </tr>
+        </table>
+
+        <div class="time-remaining-container">
+            <div id="time-remaining-bar"></div>
+        </div>
+
+        <div id="mobile-button-container" hidden="hidden">
+            <button onclick="keypress('ArrowUp')" class="mobile-button">🡅</button>
+            <table class="arrows-table">
+                <tr>
+                    <td><button onclick="keypress('ArrowLeft')" class="mobile-button">🡄</button></td>
+                    <td><button onclick="keypress('ArrowDown')" class="mobile-button">🡇</button></td>
+                    <td><button onclick="keypress('ArrowRight')" class="mobile-button">🡆</button></td>
+                </tr>
+            </table>
+        </div>  
+    </div>
+
+    <div class="game-over-popup" id="game-over-popup" hidden="hidden">
+        <h1 class="title" id="score-readout">SCORE: ##</h1>
+        <p id="completed-strategems-readout"></p>
+        <button onclick="copyShare()" id="share-button">
+            Share your score!
+        </button>
+        <br>
+        <button onclick="window.location.reload()" id="refresh-button">
+            Reinforce! (Play Again)
+            <table class="arrows-table" id="refresh-arrows-container">
+                <tr>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_4_U.png"></td>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_1_D.png"></td>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_2_L.png"></td>
+                    <td><img class="arrow-image" src="Images/Arrows/Arrow_3_R.png"></td>
+                </tr>
+            </table>
+        </button>
+    </div>
+
+    <div class="info">
+        <p class="larger-info">
+            Check out Helldivers 2 on <a href="https://store.steampowered.com/app/553850/HELLDIVERS_2/" target="_blank">Steam</a> and <a href="https://www.playstation.com/en-us/games/helldivers-2/" target="_blank">Playstation</a>!<br>
+        </p>
+        Made with 💖 by <a href="https://github.com/CombustibleToast" target="_blank">CombustibleToast</a><br> 
+        View the source code <a href="https://github.com/CombustibleToast/StratagemHeroOnline" target="_blank">on Github</a><br>
+        Report an issue <a href="https://github.com/CombustibleToast/StratagemHeroOnline/issues" target="_blank">here</a><br>
+        Not affiliated with Helldivers, Arrowhead Studios, or Playstation Studios. Please don't sue me :)<br>
+    </div>
+</body>
+
+<script type="text/javascript" src="./data/Stratagem-Sequences.json"></script>
+<script type="text/javascript" src="./script.js"></script>

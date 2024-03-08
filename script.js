@@ -72,11 +72,11 @@ function gamepadLoop() {
 }
 
 // Load SFX
-var sfxDown = new Audio("./Images/Sounds/1_D.mp3");
-var sfxLeft = new Audio("./Images/Sounds/2_L.mp3");
-var sfxRight = new Audio("./Images/Sounds/3_R.mp3");
-var sfxUp = new Audio("./Images/Sounds/4_U.mp3");
-var sfxGameOver = [new Audio("./Images/Sounds/GameOver1.mp3"), new Audio("./Images/Sounds/GameOver2.mp3")]
+var sfxDown = new Audio("./data/Sounds/1_D.mp3");
+var sfxLeft = new Audio("./data/Sounds/2_L.mp3");
+var sfxRight = new Audio("./data/Sounds/3_R.mp3");
+var sfxUp = new Audio("./data/Sounds/4_U.mp3");
+var sfxGameOver = [new Audio("./data/Sounds/GameOver1.mp3"), new Audio("./data/Sounds/GameOver2.mp3")]
 
 // Create global tracking variables
 var gameState = "initial" //initial, running, hitlag, over
@@ -241,7 +241,7 @@ function shakeArrows(time){
 function refreshStratagemDisplay(){
     for(let i in currentStratagemsList){
         // Show the stratagem's picture in the correct slot
-        document.getElementById(`stratagem-icon-${i}`).src = `./Images/Stratagem\ Icons/hd2/${currentStratagemsList[i].image}`;
+        document.getElementById(`stratagem-icon-${i}`).src = `./data/Images/Stratagem\ Icons/hd2/${currentStratagemsList[i].image}`;
     }
 
     // Show arrow icons for the current active stratagem
@@ -268,7 +268,7 @@ function showArrowSequence(arrowSequence, arrowsContainer){
         let td = document.createElement("td");
         let img = document.createElement("img");
         td.appendChild(img);
-        img.setAttribute("src", `./Images/Arrows/${arrow}.png`);
+        img.setAttribute("src", `./data/Images/Arrows/${arrow}.png`);
         img.setAttribute("class", `arrow-incomplete-filter`);
 
         // Map filename to keycode

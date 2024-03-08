@@ -335,13 +335,6 @@ function stratagemListToString(html, spamless){
     let re = "";
     for(let stratagem of completedStrategemsList){
         let line = `${stratagem.name}: `;
-        
-        //Put padding spaces
-        // console.log(`i ${line.length}`)
-        // for(let i = line.length; i < TOTAL_PADDING; i++){
-        //     line += " ";
-        //     console.log(`put space: ${line}.`)
-        // }
 
         //Put arrows
         for(let direction of stratagem.sequence){

@@ -244,6 +244,9 @@ function refreshStratagemDisplay(){
         if (currentStratagemsList[i].image) {
             document.getElementById(`stratagem-icon-${i}`).src = `./data/Images/Stratagem\ Icons/hd2/${currentStratagemsList[i].image}`;
         }
+        else {
+            document.getElementById(`stratagem-icon-${i}`).src = `./data/Images/Stratagem\ Icons/hd2/placeholder.png`;
+        }
     }
 
     // Show arrow icons for the current active stratagem

@@ -70,9 +70,9 @@
     "image": "flamethrower.svg"
   },
   {
-    "name": "Auto-Cannon",
+    "name": "Autocannon",
     "sequence": "DLDUUR",
-    "image": "auto-cannon.svg"
+    "image": "autocannon.svg"
   },
   {
     "name": "Railgun",
@@ -190,9 +190,9 @@
     "image": "hmg_emplacement.svg"
   },
   {
-    "name": "Shield Generator Relay",
+    "name": "Shield Generator Pack",
     "sequence": "DDLRLR",
-    "image": "shield_generator_relay.svg"
+    "image": "shield_generator_pack.svg"
   },
   {
     "name": "Tesla Tower",

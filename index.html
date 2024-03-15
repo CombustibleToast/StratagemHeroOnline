@@ -32,6 +32,15 @@
             width: 100%;
         }
 
+        .button {
+            background-color: black;
+            color: white;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+        }
+
         .title {
             color: #FFE900;
             font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
@@ -289,8 +298,8 @@
         </button>
     </div>
 
-    <div class="game-config-popup-container">
-        <div class="game-config-popup" id="game-config-popup">
+    <div class="game-config-popup-container" id="game-config-popup">
+        <div class="game-config-popup">
             <p class="game-config-popup__title">Change your keybinds</p>
             <div class="game-config-popup__key-bindings">
                 <div class="key-bind-container key-bind-container--up">
@@ -317,7 +326,10 @@
                     </p>
                     <input name="right" type="text">
                 </div>
-    
+            </div>
+            <div class="game-config-popup__action-buttons">
+                <button role="button" id="game-config--save" class="button save-button">save</button>
+                <button role="button" id="game-config--close" class="button close-button">close</button>
             </div>
         </div>
     </div>

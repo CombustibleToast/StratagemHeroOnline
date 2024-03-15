@@ -42,6 +42,13 @@
     align-items: center;
     flex-direction: column;
 }
+.key-bind-container input {
+    width: 4rem;
+    text-align: center;
+    font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+}
 .key-bind-container--up   {
     grid-area: keyup;
 }
@@ -53,4 +60,14 @@
 }
 .key-bind-container--right{
     grid-area: keyright;
+}
+
+
+.game-config-popup__action-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    margin-top: 1.5rem;
 }

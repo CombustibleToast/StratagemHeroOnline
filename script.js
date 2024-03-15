@@ -15,12 +15,14 @@ stratagems = JSON.parse(stratagems);
 // console.log(stratagems);
 
 // Install keypress listener
-addEventListener("keydown", (event) => {
+function mainGameKeyDownListener(event) {
     if (event.isComposing || event.code === 229) {
         return;
     }
     keypress(event.code);
-});
+}
+
+addEventListener("keydown", mainGameKeyDownListener);
 
 // Set gamepad polling
 let gpPollInterval;
@@ -94,18 +96,18 @@ var completedStrategemsList = [];
 const CURRENT_STRATAGEM_LIST_LENGTH = 4; //dependent on the html, don't change without modifying html too
 var currentStratagemsList = [];
 var lastCheckedTime = undefined;
-
-
+var CONFIGPOPUP = document.getElementById('game-config-popup');
+var TEMPARROWKEYS = {};
 
 // initial state of custom config
-// const storedConfig = localStorage.getItem("CONFIG") ? localStorage.getItem("CONFIG") : false;
+const storedArrowKeysConfig = localStorage.getItem("CONFIG.arrowKeys") ? JSON.parse(localStorage.getItem("CONFIG.arrowKeys")) : false;
 const CONFIG = {
 };
 
 
 
-if(storedConfig) {
-    CONFIG.arrowKeys = storedConfig.arrowKeys;
+if(storedArrowKeysConfig) {
+    CONFIG.arrowKeys = storedArrowKeysConfig;
 } else {
     CONFIG.arrowKeys = {
         up:"KeyW",
@@ -457,4 +459,102 @@ function showMobileButtons() {
     
     container.removeAttribute("hidden");
     container.style.visibility = "visible";
+}
+
+function configPopupInputListener(event) {
+    //this limits the input charater length to 1 char
+    event.target.value = event.data.toUpperCase();
+}
+function configPopupButtonListener(event) {
+    let buttons = Array.from(CONFIGPOPUP.querySelectorAll('button[role=button]'));
+    let foundButton = buttons.find(button => {
+        return event.target.closest(`#${button.id}`);
+    });
+
+    if (foundButton) {
+        switch (foundButton.id) {
+            case "game-config--save":
+                //save controls
+                configSaveArrowKeys();
+                break;
+            case "game-config--close":
+                //close popup
+                toggleConfigPopup();
+                break;
+        }
+    }
+}
+
+function configSaveArrowKeys() {
+    CONFIG.arrowKeys = TEMPARROWKEYS;
+    localStorage.setItem("CONFIG.arrowKeys", JSON.stringify(CONFIG.arrowKeys));
+}
+
+function configPopupKeydownListener(event) {
+    let activeElement = document.activeElement;
+
+    if (activeElement.tagName == "INPUT") {
+        let excludedKeys = ["TAB", "ALT"];
+        if (!excludedKeys.find((keyCode) => event.code.toUpperCase().includes(keyCode))) {
+            TEMPARROWKEYS[activeElement.name] = event.code;
+        }
+    }
+}
+
+
+let configPopupEvents = [
+    ["input", configPopupInputListener],
+    ["click", configPopupButtonListener],
+    ["keydown", configPopupKeydownListener]
+];
+function addConfigPopupListener() {
+    configPopupEvents.forEach((event)=>{
+        addEventListener(event[0], event[1]);
+    })
+}
+function removeConfigPopupListener() {
+    configPopupEvents.forEach((event)=>{
+        removeEventListener(event[0], event[1]);
+    })
+}
+
+function addMainGameListener() {
+    addEventListener("keydown", mainGameKeyDownListener);
+}
+function removeMainGameListener() {
+    removeEventListener("keydown", mainGameKeyDownListener);
+}
+
+function toggleConfigPopup() {
+    let popupCurrentState = CONFIGPOPUP.classList.contains('active');
+
+    if (popupCurrentState == true) {
+        CONFIGPOPUP.classList.remove('active');
+        addMainGameListener();
+        removeConfigPopupListener();
+    } else {
+        CONFIGPOPUP.classList.add('active');
+        initaliseConfigPopupInputs();
+        removeMainGameListener();
+        addConfigPopupListener();
+        TEMPARROWKEYS = Object.assign({}, CONFIG.arrowKeys);
+    }
+}
+
+function getConfigPopupInputs() {
+    return CONFIGPOPUP.querySelectorAll('input[name][type=text]');
+}
+
+function initaliseConfigPopupInputs() {
+    let inputs = getConfigPopupInputs();
+
+    inputs.forEach((input)=>{
+        let inputKey = Object.keys(CONFIG.arrowKeys).find((key)=>{
+            return key.toLowerCase() == input.name.toLowerCase();
+        });
+        
+        if (inputKey) {
+            input.value = CONFIG.arrowKeys[inputKey].slice(-1).toUpperCase();
+        }
+    })
 }

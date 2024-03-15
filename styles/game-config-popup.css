@@ -1,0 +1,56 @@
+.game-config-popup-container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.game-config-popup {
+    display: block;
+    background-color: #d9d9d9;
+    border-radius: 10px;
+    border: 1px solid white;
+    padding: 3rem;
+}
+
+.game-config-popup__title {
+    text-align: center;
+    font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0.9rem;
+}
+
+.game-config-popup__key-bindings {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    '. keyup .'
+    'keyleft keydown keyright';
+}
+
+
+.key-bind-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.key-bind-container--up   {
+    grid-area: keyup;
+}
+.key-bind-container--left {
+    grid-area: keyleft;
+}
+.key-bind-container--down {
+    grid-area: keydown;
+}
+.key-bind-container--right{
+    grid-area: keyright;
+}

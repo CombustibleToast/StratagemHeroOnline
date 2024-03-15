@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Geneva">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tahoma">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="./styles/game-config-popup.css">
     <style>
         body {
             width: 99%;
@@ -286,6 +287,39 @@
                 </tr>
             </table>
         </button>
+    </div>
+
+    <div class="game-config-popup-container">
+        <div class="game-config-popup" id="game-config-popup">
+            <p class="game-config-popup__title">Change your keybinds</p>
+            <div class="game-config-popup__key-bindings">
+                <div class="key-bind-container key-bind-container--up">
+                    <p>
+                        <img class="arrow-image" src="data/Images/Arrows/U - Copy.png">
+                    </p>
+                    <input name="up" type="text">
+                </div>
+                <div class="key-bind-container key-bind-container--left">
+                    <p>
+                        <img class="arrow-image" src="data/Images/Arrows/L - Copy.png">
+                    </p>
+                    <input name="left" type="text">
+                </div>
+                <div class="key-bind-container key-bind-container--down">
+                    <p>
+                        <img class="arrow-image" src="data/Images/Arrows/D - Copy.png">
+                    </p>
+                    <input name="down" type="text">
+                </div>
+                <div class="key-bind-container key-bind-container--right">
+                    <p>
+                        <img class="arrow-image" src="data/Images/Arrows/R - Copy.png">
+                    </p>
+                    <input name="right" type="text">
+                </div>
+    
+            </div>
+        </div>
     </div>
 
     <div class="info">

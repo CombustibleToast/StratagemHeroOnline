@@ -95,6 +95,26 @@ const CURRENT_STRATAGEM_LIST_LENGTH = 4; //dependent on the html, don't change w
 var currentStratagemsList = [];
 var lastCheckedTime = undefined;
 
+
+
+// initial state of custom config
+// const storedConfig = localStorage.getItem("CONFIG") ? localStorage.getItem("CONFIG") : false;
+const CONFIG = {
+};
+
+
+
+if(storedConfig) {
+    CONFIG.arrowKeys = storedConfig.arrowKeys;
+} else {
+    CONFIG.arrowKeys = {
+        up:"KeyW",
+        down:"KeyS",
+        left:"KeyA",
+        right:"KeyD"
+    }
+}
+
 // Show directional buttons if user is on mobile
 if(userIsMobile())
     showMobileButtons();
@@ -116,23 +136,23 @@ function keypress(keyCode){
     // Ignore invalid keypresses
     let sfx;
     switch(keyCode){
-        case "KeyW":
         case "ArrowUp":
+        case CONFIG.arrowKeys.up:
             sfx = sfxUp;
             keyCode = "KeyW";
             break;
-        case "KeyS":
         case "ArrowDown":
+        case CONFIG.arrowKeys.down:
             sfx = sfxDown;
             keyCode = "KeyS";
             break;
-        case "KeyA":
         case "ArrowLeft":
+        case CONFIG.arrowKeys.left:
             sfx = sfxLeft;
             keyCode = "KeyA";
             break;
-        case "KeyD":
         case "ArrowRight":
+        case CONFIG.arrowKeys.right:
             sfx = sfxRight;
             keyCode = "KeyD";
             break;

@@ -297,6 +297,8 @@
             </table>
         </button>
     </div>
+    
+    <!-- //TODO: add button to open config popup -->
 
     <div class="game-config-popup-container" id="game-config-popup">
         <div class="game-config-popup">
@@ -328,13 +330,16 @@
                 </div>
             </div>
             <div class="game-config-popup__action-buttons">
-                <button role="button" id="game-config--save" class="button save-button">save</button>
-                <button role="button" id="game-config--close" class="button close-button">close</button>
+                <button role="button" data-action-type="game-config--save" class="button save-button">save</button>
+                <button role="button" data-action-type="game-config--close" class="button close-button">close</button>
             </div>
         </div>
     </div>
 
     <div class="info">
+        <div class="info__config-actions-container">
+            <button role="button" data-action-type="game-config--open" class="button">change keybinds</button>
+        </div>
         <p class="larger-info">
             Check out Helldivers 2 on <a href="https://store.steampowered.com/app/553850/HELLDIVERS_2/" target="_blank">Steam</a> and <a href="https://www.playstation.com/en-us/games/helldivers-2/" target="_blank">Playstation</a>!<br>
         </p>

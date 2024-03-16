@@ -22,7 +22,7 @@ function mainGameKeyDownListener(event) {
     keypress(event.code);
 }
 
-addEventListener("keydown", mainGameKeyDownListener);
+addMainGameListener();
 
 // Set gamepad polling
 let gpPollInterval;
@@ -101,9 +101,7 @@ var TEMPARROWKEYS = {};
 
 // initial state of custom config
 const storedArrowKeysConfig = localStorage.getItem("CONFIG.arrowKeys") ? JSON.parse(localStorage.getItem("CONFIG.arrowKeys")) : false;
-const CONFIG = {
-};
-
+const CONFIG = {};
 
 
 if(storedArrowKeysConfig) {
@@ -466,18 +464,20 @@ function configPopupInputListener(event) {
     event.target.value = event.data.toUpperCase();
 }
 function configPopupButtonListener(event) {
-    let buttons = Array.from(CONFIGPOPUP.querySelectorAll('button[role=button]'));
-    let foundButton = buttons.find(button => {
-        return event.target.closest(`#${button.id}`);
+    let actionTypes = ["game-config--save", "game-config--close", "game-config--open"];
+    let foundType = actionTypes.find(actionType => {
+        return event.target.closest(`[data-action-type="${actionType}"]`);
     });
+    let foundButton = event.target.closest(`[data-action-type="${foundType}"]`);
 
     if (foundButton) {
-        switch (foundButton.id) {
+        switch (foundButton.dataset.actionType) {
             case "game-config--save":
                 //save controls
                 configSaveArrowKeys();
-                break;
+                //NOTE: This is a intentional missing break as i want both the save and the popup close to happen due to there not being any more settings here
             case "game-config--close":
+            case "game-config--open":
                 //close popup
                 toggleConfigPopup();
                 break;
@@ -504,7 +504,6 @@ function configPopupKeydownListener(event) {
 
 let configPopupEvents = [
     ["input", configPopupInputListener],
-    ["click", configPopupButtonListener],
     ["keydown", configPopupKeydownListener]
 ];
 function addConfigPopupListener() {
@@ -520,6 +519,7 @@ function removeConfigPopupListener() {
 
 function addMainGameListener() {
     addEventListener("keydown", mainGameKeyDownListener);
+    addEventListener("click", configPopupButtonListener);
 }
 function removeMainGameListener() {
     removeEventListener("keydown", mainGameKeyDownListener);

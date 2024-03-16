@@ -11,8 +11,25 @@
     <meta charset="UTF-8">
     <style>
         body {
-            width: 99%;
-            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        a {
+            color: #FFE900;
+        }
+
+        button {
+            border: 0;
+            font-family: inherit;
+        }
+
+        #root {
+            background-color: #0f101c;
+            min-height: 100vh;
+            padding: 8px;
+            box-sizing: border-box;
         }
 
         .interactable-center-container {
@@ -119,16 +136,8 @@
             display: block;
             margin: auto;
         }
-
-        .background {
-            background-color: black;
-        }
-
         .info {
             color: gray;
-            position: absolute;
-            bottom: 10px;
-            width: 99%;
             text-align: center;
             font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
             z-index: -1;
@@ -139,58 +148,50 @@
         }
 
         .game-over-popup {
-            margin: auto;
-            width: 40%;
-            border-top-left-radius: 5%;
-            border-bottom-right-radius: 5%;
-            background-color: #5c5400;
+            background: linear-gradient(145deg, rgba(92, 84, 0, 1) 0%, rgba(15, 16, 28, 1) 40%, rgba(15, 16, 28, 1) 61%, rgba(92, 84, 0, 1) 100%);
             z-index: 10;
-            padding-bottom: 20px;
+            padding-block: 20px;
+            padding-inline: 10px;
+            max-width: 450px;
+            margin-inline: auto;
+            margin-top: 20px;
+            border-radius: 40px 0 40px 0;
+            box-shadow: 9px 9px 23px 4px rgba(0,0,0,0.75);;
         }
 
         #completed-strategems-readout {
             color: #FFE900;
             font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
             text-align: left;
+            width: max-content;
+            max-width: 100%;
+            margin-inline: auto;
+        }
+
+        #share-button,
+        #share-button-spamless,
+        #refresh-button {
+            background-color: #ad9f00;
+            color: #FFE900;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin: auto;
         }
 
         #share-button {
-            background-color: #ad9f00;
-            border: 1px white;
-            color: #FFE900;
-            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
             font-size: 2em;
             padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            margin: auto;
         }
 
         #share-button-spamless {
-            background-color: #ad9f00;
-            border: 1px white;
-            color: #FFE900;
-            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
             font-size: 1em;
             padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            margin: auto;
         }
 
         #refresh-button {
-            background-color: #ad9f00;
-            border: 1px white;
-            color: #FFE900;
-            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
             font-size: 1.7em;
             padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            margin: auto;
         }
 
         @keyframes shake {
@@ -210,74 +211,31 @@
     </style>
 </head>
 
-<body class="background">
-    <div class="logo-container">
-        <img class="logo" src="./data/Images/Helldivers_2_logo.webp">
-    </div>
-
-    <h1 class="title">
-        STRATAGEM HERO ONLINE
-    </h1>
-
-    <div class="interactable-center-container" id="interactable-center-container">
-        <h2 class="stratagem-name" id="stratagem-name">
-            HI :) You shouldn't see this
-        </h2>
-
-        <table class="stratagems-table" id="stratagems-table">
-            <tr>
-                <td><img class="stratagem-icon" id="stratagem-icon-0" src="data/Images/stratagem Icons/Strat Resupply mk1.png"></td>
-                <td><img class="stratagem-icon" id="stratagem-icon-1" src="data/Images/stratagem Icons/Strat Resupply mk1.png"></td>
-                <td><img class="stratagem-icon" id="stratagem-icon-2" src="data/Images/stratagem Icons/Strat Resupply mk1.png"></td>
-                <td><img class="stratagem-icon" id="stratagem-icon-3" src="data/Images/stratagem Icons/Strat Resupply mk1.png"></td>
-            </tr>
-        </table>
-
-        <table class="arrows-table" id="arrows-container">
-            <tr>
-                <td><img class="arrow-image" src="data/Images/Arrows/Arrow_4_U.png"></td>
-                <td><img class="arrow-image" src="data/Images/Arrows/Arrow_1_D.png"></td>
-                <td><img class="arrow-image" src="data/Images/Arrows/Arrow_2_L.png"></td>
-                <td><img class="arrow-image" src="data/Images/Arrows/Arrow_3_R.png"></td>
-            </tr>
-        </table>
-
-        <div class="time-remaining-container">
-            <div id="time-remaining-bar"></div>
+<body>
+    <div id="root">
+        <div class="logo-container">
+            <img class="logo" src="./data/Images/Helldivers_2_logo.webp">
         </div>
 
-        <div id="mobile-button-container" hidden="hidden">
-            <button onclick="keypress('ArrowUp')" class="mobile-button">🡅</button>
-            <table class="arrows-table">
+        <h1 class="title">
+            STRATAGEM HERO ONLINE
+        </h1>
+
+        <div class="interactable-center-container" id="interactable-center-container">
+            <h2 class="stratagem-name" id="stratagem-name">
+                HI :) You shouldn't see this
+            </h2>
+
+            <table class="stratagems-table" id="stratagems-table">
                 <tr>
-                    <td><button onclick="keypress('ArrowLeft')" class="mobile-button">🡄</button></td>
-                    <td><button onclick="keypress('ArrowDown')" class="mobile-button">🡇</button></td>
-                    <td><button onclick="keypress('ArrowRight')" class="mobile-button">🡆</button></td>
+                    <td><img class="stratagem-icon" id="stratagem-icon-0" src="data/Images/stratagem Icons/Strat Resupply mk1.png"></td>
+                    <td><img class="stratagem-icon" id="stratagem-icon-1" src="data/Images/stratagem Icons/Strat Resupply mk1.png"></td>
+                    <td><img class="stratagem-icon" id="stratagem-icon-2" src="data/Images/stratagem Icons/Strat Resupply mk1.png"></td>
+                    <td><img class="stratagem-icon" id="stratagem-icon-3" src="data/Images/stratagem Icons/Strat Resupply mk1.png"></td>
                 </tr>
             </table>
-        </div>  
-    </div>
 
-    <div class="game-over-popup" id="game-over-popup" hidden="hidden">
-        <h1 class="title" id="score-readout">SCORE: ##</h1>
-        <p id="completed-strategems-readout"></p>
-        <div>
-            
-            <button onclick="copyShare()" id="share-button">
-                Share your score!
-            </button>
-
-            <br>
-            
-            <button onclick="copyShare(true)" id="share-button-spamless">
-                Spam Filter Compatible Share
-            </button>
-
-        </div>
-        <br>
-        <button onclick="window.location.reload()" id="refresh-button">
-            Reinforce! (Play Again)
-            <table class="arrows-table" id="refresh-arrows-container">
+            <table class="arrows-table" id="arrows-container">
                 <tr>
                     <td><img class="arrow-image" src="data/Images/Arrows/Arrow_4_U.png"></td>
                     <td><img class="arrow-image" src="data/Images/Arrows/Arrow_1_D.png"></td>
@@ -285,18 +243,63 @@
                     <td><img class="arrow-image" src="data/Images/Arrows/Arrow_3_R.png"></td>
                 </tr>
             </table>
-        </button>
-    </div>
 
-    <div class="info">
-        <p class="larger-info">
-            Check out Helldivers 2 on <a href="https://store.steampowered.com/app/553850/HELLDIVERS_2/" target="_blank">Steam</a> and <a href="https://www.playstation.com/en-us/games/helldivers-2/" target="_blank">Playstation</a>!<br>
-        </p>
-        Made with 💖 by <a href="https://github.com/CombustibleToast" target="_blank">CombustibleToast</a><br> 
-        Additional contributions by <a href="https://github.com/CombustibleToast/StratagemHeroOnline/pulls?q=is%3Apr+author%3ASavageCore" target="_blank">SavageCore</a>, <a href="https://github.com/CombustibleToast/StratagemHeroOnline/pulls?q=is%3Apr+author%3Arrliu" target="_blank">rrliu</a>, and <a href="https://github.com/nvigneux/Helldivers-2-Stratagems-icons-svg" target="_blank">nvigneux</a> for the images. Thank you! <br>
-        Play the original Helldivers 1 version <a href="Old/index.html">here</a>.<br>
-        View the source code <a href="https://github.com/CombustibleToast/StratagemHeroOnline" target="_blank">on Github</a> or report an issue <a href="https://github.com/CombustibleToast/StratagemHeroOnline/issues" target="_blank">here</a><br>
-        Not affiliated with Helldivers, Arrowhead Studios, or Playstation Studios. Please don't sue me :)<br>
+            <div class="time-remaining-container">
+                <div id="time-remaining-bar"></div>
+            </div>
+
+            <div id="mobile-button-container" hidden="hidden">
+                <button onclick="keypress('ArrowUp')" class="mobile-button">🡅</button>
+                <table class="arrows-table">
+                    <tr>
+                        <td><button onclick="keypress('ArrowLeft')" class="mobile-button">🡄</button></td>
+                        <td><button onclick="keypress('ArrowDown')" class="mobile-button">🡇</button></td>
+                        <td><button onclick="keypress('ArrowRight')" class="mobile-button">🡆</button></td>
+                    </tr>
+                </table>
+            </div>  
+        </div>
+
+        <div class="game-over-popup" id="game-over-popup" hidden="hidden">
+            <h1 class="title" id="score-readout">SCORE: ##</h1>
+            <p id="completed-strategems-readout"></p>
+            <div>
+                
+                <button onclick="copyShare()" id="share-button">
+                    Share your score!
+                </button>
+
+                <br>
+                
+                <button onclick="copyShare(true)" id="share-button-spamless">
+                    Spam Filter Compatible Share
+                </button>
+
+            </div>
+            <br>
+            <button onclick="window.location.reload()" id="refresh-button">
+                Reinforce! (Play Again)
+                <table class="arrows-table" id="refresh-arrows-container">
+                    <tr>
+                        <td><img class="arrow-image" src="data/Images/Arrows/Arrow_4_U.png"></td>
+                        <td><img class="arrow-image" src="data/Images/Arrows/Arrow_1_D.png"></td>
+                        <td><img class="arrow-image" src="data/Images/Arrows/Arrow_2_L.png"></td>
+                        <td><img class="arrow-image" src="data/Images/Arrows/Arrow_3_R.png"></td>
+                    </tr>
+                </table>
+            </button>
+        </div>
+
+        <div class="info">
+            <p class="larger-info">
+                Check out Helldivers 2 on <a href="https://store.steampowered.com/app/553850/HELLDIVERS_2/" target="_blank">Steam</a> and <a href="https://www.playstation.com/en-us/games/helldivers-2/" target="_blank">Playstation</a>!<br>
+            </p>
+            Made with 💖 by <a href="https://github.com/CombustibleToast" target="_blank">CombustibleToast</a><br> 
+            Additional contributions by <a href="https://github.com/CombustibleToast/StratagemHeroOnline/pulls?q=is%3Apr+author%3ASavageCore" target="_blank">SavageCore</a>, <a href="https://github.com/CombustibleToast/StratagemHeroOnline/pulls?q=is%3Apr+author%3Arrliu" target="_blank">rrliu</a>, and <a href="https://github.com/nvigneux/Helldivers-2-Stratagems-icons-svg" target="_blank">nvigneux</a> for the images. Thank you! <br>
+            Play the original Helldivers 1 version <a href="Old/index.html">here</a>.<br>
+            View the source code <a href="https://github.com/CombustibleToast/StratagemHeroOnline" target="_blank">on Github</a> or report an issue <a href="https://github.com/CombustibleToast/StratagemHeroOnline/issues" target="_blank">here</a><br>
+            Not affiliated with Helldivers, Arrowhead Studios, or Playstation Studios. Please don't sue me :)<br>
+        </div>
     </div>
 </body>
 

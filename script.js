@@ -15,12 +15,14 @@ stratagems = JSON.parse(stratagems);
 // console.log(stratagems);
 
 // Install keypress listener
-addEventListener("keydown", (event) => {
+function mainGameKeyDownListener(event) {
     if (event.isComposing || event.code === 229) {
         return;
     }
     keypress(event.code);
-});
+}
+
+addMainGameListener();
 
 // Set gamepad polling
 let gpPollInterval;
@@ -94,6 +96,24 @@ var completedStrategemsList = [];
 const CURRENT_STRATAGEM_LIST_LENGTH = 4; //dependent on the html, don't change without modifying html too
 var currentStratagemsList = [];
 var lastCheckedTime = undefined;
+var CONFIGPOPUP = document.getElementById('game-config-popup');
+var TEMPARROWKEYS = {};
+
+// initial state of custom config
+const storedArrowKeysConfig = localStorage.getItem("CONFIG.arrowKeys") ? JSON.parse(localStorage.getItem("CONFIG.arrowKeys")) : false;
+const CONFIG = {};
+
+
+if(storedArrowKeysConfig) {
+    CONFIG.arrowKeys = storedArrowKeysConfig;
+} else {
+    CONFIG.arrowKeys = {
+        up:"KeyW",
+        down:"KeyS",
+        left:"KeyA",
+        right:"KeyD"
+    }
+}
 
 // Show directional buttons if user is on mobile
 if(userIsMobile())
@@ -116,23 +136,23 @@ function keypress(keyCode){
     // Ignore invalid keypresses
     let sfx;
     switch(keyCode){
-        case "KeyW":
         case "ArrowUp":
+        case CONFIG.arrowKeys.up:
             sfx = sfxUp;
             keyCode = "KeyW";
             break;
-        case "KeyS":
         case "ArrowDown":
+        case CONFIG.arrowKeys.down:
             sfx = sfxDown;
             keyCode = "KeyS";
             break;
-        case "KeyA":
         case "ArrowLeft":
+        case CONFIG.arrowKeys.left:
             sfx = sfxLeft;
             keyCode = "KeyA";
             break;
-        case "KeyD":
         case "ArrowRight":
+        case CONFIG.arrowKeys.right:
             sfx = sfxRight;
             keyCode = "KeyD";
             break;
@@ -441,4 +461,104 @@ function showMobileButtons() {
     
     container.removeAttribute("hidden");
     container.style.visibility = "visible";
+}
+
+function configPopupInputListener(event) {
+    //this limits the input charater length to 1 char
+    event.target.value = event.data.toUpperCase();
+}
+function configPopupButtonListener(event) {
+    let actionTypes = ["game-config--save", "game-config--close", "game-config--open"];
+    let foundType = actionTypes.find(actionType => {
+        return event.target.closest(`[data-action-type="${actionType}"]`);
+    });
+    let foundButton = event.target.closest(`[data-action-type="${foundType}"]`);
+
+    if (foundButton) {
+        switch (foundButton.dataset.actionType) {
+            case "game-config--save":
+                //save controls
+                configSaveArrowKeys();
+                //NOTE: This is a intentional missing break as i want both the save and the popup close to happen due to there not being any more settings here
+            case "game-config--close":
+            case "game-config--open":
+                //close popup
+                toggleConfigPopup();
+                break;
+        }
+    }
+}
+
+function configSaveArrowKeys() {
+    CONFIG.arrowKeys = TEMPARROWKEYS;
+    localStorage.setItem("CONFIG.arrowKeys", JSON.stringify(CONFIG.arrowKeys));
+}
+
+function configPopupKeydownListener(event) {
+    let activeElement = document.activeElement;
+
+    if (activeElement.tagName == "INPUT") {
+        let excludedKeys = ["TAB", "ALT"];
+        if (!excludedKeys.find((keyCode) => event.code.toUpperCase().includes(keyCode))) {
+            TEMPARROWKEYS[activeElement.name] = event.code;
+        }
+    }
+}
+
+
+let configPopupEvents = [
+    ["input", configPopupInputListener],
+    ["keydown", configPopupKeydownListener]
+];
+function addConfigPopupListener() {
+    configPopupEvents.forEach((event)=>{
+        addEventListener(event[0], event[1]);
+    })
+}
+function removeConfigPopupListener() {
+    configPopupEvents.forEach((event)=>{
+        removeEventListener(event[0], event[1]);
+    })
+}
+
+function addMainGameListener() {
+    addEventListener("keydown", mainGameKeyDownListener);
+    addEventListener("click", configPopupButtonListener);
+}
+function removeMainGameListener() {
+    removeEventListener("keydown", mainGameKeyDownListener);
+}
+
+function toggleConfigPopup() {
+    let popupCurrentState = CONFIGPOPUP.classList.contains('active');
+
+    if (popupCurrentState == true) {
+        CONFIGPOPUP.classList.remove('active');
+        addMainGameListener();
+        removeConfigPopupListener();
+    } else {
+        CONFIGPOPUP.classList.add('active');
+        initaliseConfigPopupInputs();
+        removeMainGameListener();
+        addConfigPopupListener();
+        TEMPARROWKEYS = Object.assign({}, CONFIG.arrowKeys);
+    }
+}
+
+function getConfigPopupInputs() {
+    return CONFIGPOPUP.querySelectorAll('input[name][type=text]');
+}
+
+function initaliseConfigPopupInputs() {
+    let inputs = getConfigPopupInputs();
+
+    inputs.forEach((input)=>{
+        let inputKey = Object.keys(CONFIG.arrowKeys).find((key)=>{
+            return key.toLowerCase() == input.name.toLowerCase();
+        });
+        
+        if (inputKey) {
+            input.value = CONFIG.arrowKeys[inputKey].slice(-1).toUpperCase();
+        }
+    })
 }

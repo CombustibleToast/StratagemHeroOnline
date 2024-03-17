@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Geneva">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tahoma">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="./styles/game-config-popup.css">
     <style>
         body {
             margin: 0;
@@ -46,6 +47,15 @@
         .logo {
             margin: auto;
             width: 100%;
+        }
+
+        .button {
+            background-color: black;
+            color: white;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            padding: 0.5rem 1rem;
         }
 
         .title {
@@ -290,7 +300,45 @@
             </button>
         </div>
 
+        <div class="game-config-popup-container" id="game-config-popup">
+            <div class="game-config-popup">
+                <p class="game-config-popup__title">Change your keybinds</p>
+                <div class="game-config-popup__key-bindings">
+                    <div class="key-bind-container key-bind-container--up">
+                        <p>
+                            <img class="arrow-image" src="data/Images/Arrows/U - Copy.png">
+                        </p>
+                        <input name="up" type="text">
+                    </div>
+                    <div class="key-bind-container key-bind-container--left">
+                        <p>
+                            <img class="arrow-image" src="data/Images/Arrows/L - Copy.png">
+                        </p>
+                        <input name="left" type="text">
+                    </div>
+                    <div class="key-bind-container key-bind-container--down">
+                        <p>
+                            <img class="arrow-image" src="data/Images/Arrows/D - Copy.png">
+                        </p>
+                        <input name="down" type="text">
+                    </div>
+                    <div class="key-bind-container key-bind-container--right">
+                        <p>
+                            <img class="arrow-image" src="data/Images/Arrows/R - Copy.png">
+                        </p>
+                        <input name="right" type="text">
+                    </div>
+                </div>
+                <div class="game-config-popup__action-buttons">
+                    <button role="button" data-action-type="game-config--save" class="button save-button">save</button>
+                    <button role="button" data-action-type="game-config--close" class="button close-button">close</button>
+                </div>
+            </div>
+        </div>
         <div class="info">
+            <div class="info__config-actions-container">
+                <button role="button" data-action-type="game-config--open" class="button">change keybinds</button>
+            </div>
             <p class="larger-info">
                 Check out Helldivers 2 on <a href="https://store.steampowered.com/app/553850/HELLDIVERS_2/" target="_blank">Steam</a> and <a href="https://www.playstation.com/en-us/games/helldivers-2/" target="_blank">Playstation</a>!<br>
             </p>

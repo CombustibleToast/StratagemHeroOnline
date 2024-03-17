@@ -331,6 +331,10 @@ function gameOver(){
 function stratagemListToString(html, spamless){
     // Set direction characters based on argument
     let up = "🡅", down = "🡇", left = "🡄", right = "🡆";
+    if(userIsMobile()){
+        up = "⬆️", down = "⬇️", left = "⬅️", right = "➡️";
+    }
+
     if(spamless){
         up = "U", down = "D", left = "L", right = "R";
     }

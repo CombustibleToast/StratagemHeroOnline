@@ -94,6 +94,7 @@ var completedStrategemsList = [];
 const CURRENT_STRATAGEM_LIST_LENGTH = 4; //dependent on the html, don't change without modifying html too
 var currentStratagemsList = [];
 var lastCheckedTime = undefined;
+const timeRemainingBar = document.getElementById("time-remaining-bar")
 
 // Show directional buttons if user is on mobile
 if(userIsMobile())
@@ -416,10 +417,11 @@ async function countDown(){
 }
 
 function updateTimeBar(){
-    let bar = document.getElementById("time-remaining-bar");  
-    let width = (timeRemaining/TOTAL_TIME) * 100;
-    // console.log(width);
-    bar.style.width = `${width}%`;   
+    const width = (timeRemaining/TOTAL_TIME) * 100;
+    const bugOpacity = Math.min(Math.max((5000 - timeRemaining) / 800, 0), 1);
+
+    timeRemainingBar.style.setProperty("--bug-opacity", bugOpacity);
+    timeRemainingBar.style.setProperty("width", `${width}%`);
 }
 
 async function sleep(ms){

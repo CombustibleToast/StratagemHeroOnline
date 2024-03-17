@@ -109,16 +109,54 @@
             filter: grayscale(1) brightness(.8);
         }
 
+        .time-remaining-container-wrapper {
+            height: 70px;
+            display: flex;
+            overflow: hidden;
+        }
+
         .time-remaining-container {
-            width: 50%;
+            width: 100%;
             background-color: black;
             margin: auto;
+            margin-right: 60px;
         }
 
         #time-remaining-bar {
             height: 20px;
             background-color: #FFE900;
-            margin: auto;
+            margin-left: auto;
+            position: relative;
+            --bug-opacity: 0;
+        }
+
+        #time-remaining-bar::before {
+            content: "";
+            position: absolute;
+            top: -17px;
+            left: -44px;
+            width: 100px;
+            height: 60px;
+            background-image: url("data/Images/Stalker_II.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            animation: shake 0.7s infinite;
+            opacity: var(--bug-opacity);
+        }
+
+        #time-remaining-bar::after {
+            content: "";
+            position: absolute;
+            top: -25px;
+            right: -55px;
+            width: 40px;
+            height: 67px;
+            background-image: url("data/Images/helldiver-using-stratagem.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 1;
         }
 
         #mobile-button-container {
@@ -238,8 +276,10 @@
             <table class="arrows-table" id="arrows-container">
             </table>
 
-            <div class="time-remaining-container">
-                <div id="time-remaining-bar"></div>
+            <div class="time-remaining-container-wrapper">
+                <div class="time-remaining-container">
+                    <div id="time-remaining-bar"></div>
+                </div>
             </div>
 
             <div id="mobile-button-container" hidden="hidden">

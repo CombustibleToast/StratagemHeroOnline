@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Stratagem Hero Online</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico?" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?" />
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Oxanium"
+    />
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Verdana"
+    />
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Geneva"
+    />
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Tahoma"
+    />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./styles/game-config-popup.css" />
+    <link rel="stylesheet" href="./styles/drill-config-popup.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        a {
+            color: #ffe900;
+        }
+
+        button {
+            border: 0;
+            font-family: inherit;
+        }
+
+        #root {
+            background-color: #0f101c;
+            min-height: 100vh;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .interactable-center-container {
+            top: 50%;
+            margin: auto;
+            width: 100%;
+        }
+
+        .logo-container {
+            margin: auto;
+            width: 50%;
+        }
+
+        .logo {
+            margin: auto;
+            width: 100%;
+        }
+
+        .button {
+            background-color: black;
+            color: white;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+        }
+
+        .title {
+            color: #ffe900;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            width: 50%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .stratagem-name {
+            color: white;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            width: 50%;
+            margin: auto;
+            padding-top: 10px;
+            text-align: center;
+        }
+
+        .stratagems-table {
+            margin-left: 47.8%;
+            align-items: center;
+        }
+
+        .stratagem-icon {
+            display: block;
+            margin: auto;
+            width: 3.2em;
+        }
+
+        #stratagem-icon-0 {
+            opacity: 100%;
+        }
+
+        #stratagem-icon-1 {
+            opacity: 50%;
+        }
+
+        #stratagem-icon-2 {
+            opacity: 25%;
+        }
+
+        #stratagem-icon-3 {
+            opacity: 12.5%;
+        }
+
+        .arrows-table {
+            margin: auto;
+            align-items: center;
+        }
+
+        .arrow-image {
+            margin: auto;
+        }
+
+        .arrow-complete-filter {
+            filter: brightness(1) saturate(5);
+        }
+
+        .arrow-incomplete-filter {
+            filter: grayscale(1) brightness(0.8);
+        }
+
+        .time-remaining-container {
+            width: 50%;
+            background-color: black;
+            margin: auto;
+        }
+
+        #time-remaining-bar {
+            height: 20px;
+            background-color: #ffe900;
+            margin: auto;
+        }
+
+        #mobile-button-container {
+            margin-top: 1%;
+        }
+
+        .mobile-button {
+            background-color: #3b3600;
+            color: #645c00;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 5em;
+            padding: 0px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin: auto;
+        }
+        .info {
+            color: gray;
+            text-align: center;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            z-index: -1;
+        }
+
+        .larger-info {
+            font-size: 2em;
+        }
+
+        .game-over-popup {
+            background: linear-gradient(
+                145deg,
+                rgba(92, 84, 0, 1) 0%,
+                rgba(15, 16, 28, 1) 40%,
+                rgba(15, 16, 28, 1) 61%,
+                rgba(92, 84, 0, 1) 100%
+            );
+            z-index: 10;
+            padding-block: 20px;
+            padding-inline: 10px;
+            max-width: 450px;
+            margin-inline: auto;
+            margin-top: 20px;
+            border-radius: 40px 0 40px 0;
+            box-shadow: 9px 9px 23px 4px rgba(0, 0, 0, 0.75);
+        }
+
+        #completed-strategems-readout {
+            color: #ffe900;
+            font-family: Oxanium, Verdana, Geneva, Tahoma, sans-serif;
+            text-align: left;
+            width: max-content;
+            max-width: 100%;
+            margin-inline: auto;
+        }
+
+        #share-button,
+        #share-button-spamless,
+        #refresh-button {
+            background-color: #ad9f00;
+            color: #ffe900;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin: auto;
+        }
+
+        #share-button {
+            font-size: 2em;
+            padding: 15px 32px;
+        }
+
+        #share-button-spamless {
+            font-size: 1em;
+            padding: 15px 32px;
+        }
+
+        #refresh-button {
+            font-size: 1.7em;
+            padding: 10px 20px;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(1px, 1px) rotate(0deg);
+            }
+            10% {
+                transform: translate(-1px, -2px) rotate(-1deg);
+            }
+            20% {
+                transform: translate(-3px, 0px) rotate(1deg);
+            }
+            30% {
+                transform: translate(3px, 2px) rotate(0deg);
+            }
+            40% {
+                transform: translate(1px, -1px) rotate(1deg);
+            }
+            50% {
+                transform: translate(-1px, 2px) rotate(-1deg);
+            }
+            60% {
+                transform: translate(-3px, 1px) rotate(0deg);
+            }
+            70% {
+                transform: translate(3px, 1px) rotate(-1deg);
+            }
+            80% {
+                transform: translate(-1px, -1px) rotate(1deg);
+            }
+            90% {
+                transform: translate(1px, 2px) rotate(0deg);
+            }
+            100% {
+                transform: translate(1px, -2px) rotate(-1deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <div class="logo-container">
+            <img class="logo" src="./data/Images/Helldivers_2_logo.webp" />
+        </div>
+
+        <h1 class="title">STRATAGEM HERO ONLINE – DRILL</h1>
+
+        <div
+            class="interactable-center-container"
+            id="interactable-center-container"
+        >
+            <h2 class="stratagem-name" id="stratagem-name">
+                HI :) You shouldn't see this
+            </h2>
+
+            <table class="stratagems-table" id="stratagems-table">
+                <tr>
+                    <td>
+                        <img
+                            class="stratagem-icon"
+                            id="stratagem-icon-0"
+                            src="data/Images/stratagem Icons/Strat Resupply mk1.png"
+                        />
+                    </td>
+                    <td>
+                        <img
+                            class="stratagem-icon"
+                            id="stratagem-icon-1"
+                            src="data/Images/stratagem Icons/Strat Resupply mk1.png"
+                        />
+                    </td>
+                    <td>
+                        <img
+                            class="stratagem-icon"
+                            id="stratagem-icon-2"
+                            src="data/Images/stratagem Icons/Strat Resupply mk1.png"
+                        />
+                    </td>
+                    <td>
+                        <img
+                            class="stratagem-icon"
+                            id="stratagem-icon-3"
+                            src="data/Images/stratagem Icons/Strat Resupply mk1.png"
+                        />
+                    </td>
+                </tr>
+            </table>
+
+            <table class="arrows-table" id="arrows-container">
+                <tr>
+                    <td>
+                        <img
+                            class="arrow-image"
+                            src="data/Images/Arrows/Arrow_4_U.png"
+                        />
+                    </td>
+                    <td>
+                        <img
+                            class="arrow-image"
+                            src="data/Images/Arrows/Arrow_1_D.png"
+                        />
+                    </td>
+                    <td>
+                        <img
+                            class="arrow-image"
+                            src="data/Images/Arrows/Arrow_2_L.png"
+                        />
+                    </td>
+                    <td>
+                        <img
+                            class="arrow-image"
+                            src="data/Images/Arrows/Arrow_3_R.png"
+                        />
+                    </td>
+                </tr>
+            </table>
+
+            <div class="time-remaining-container">
+                <div id="time-remaining-bar"></div>
+            </div>
+
+            <div id="mobile-button-container" hidden="hidden">
+                <button onclick="keypress('ArrowUp')" class="mobile-button">
+                    🡅
+                </button>
+                <table class="arrows-table">
+                    <tr>
+                        <td>
+                            <button
+                                onclick="keypress('ArrowLeft')"
+                                class="mobile-button"
+                            >
+                                🡄
+                            </button>
+                        </td>
+                        <td>
+                            <button
+                                onclick="keypress('ArrowDown')"
+                                class="mobile-button"
+                            >
+                                🡇
+                            </button>
+                        </td>
+                        <td>
+                            <button
+                                onclick="keypress('ArrowRight')"
+                                class="mobile-button"
+                            >
+                                🡆
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="game-over-popup" id="game-over-popup" hidden="hidden">
+            <h1 class="title" id="score-readout">DRILL SCORE: ##</h1>
+            <p id="completed-strategems-readout"></p>
+            <button onclick="window.location.reload()" id="refresh-button">
+                Reinforce! (Play Again)
+                <table class="arrows-table" id="refresh-arrows-container">
+                    <tr>
+                        <td>
+                            <img
+                                class="arrow-image"
+                                src="data/Images/Arrows/Arrow_4_U.png"
+                            />
+                        </td>
+                        <td>
+                            <img
+                                class="arrow-image"
+                                src="data/Images/Arrows/Arrow_1_D.png"
+                            />
+                        </td>
+                        <td>
+                            <img
+                                class="arrow-image"
+                                src="data/Images/Arrows/Arrow_2_L.png"
+                            />
+                        </td>
+                        <td>
+                            <img
+                                class="arrow-image"
+                                src="data/Images/Arrows/Arrow_3_R.png"
+                            />
+                        </td>
+                    </tr>
+                </table>
+            </button>
+        </div>
+
+        <div class="game-config-popup-container" id="drill-config-popup">
+            <div class="game-config-popup">
+                <p class="game-config-popup__title">Select drill stratagems</p>
+
+                <div class="game-config-popup__stratagem-options" id="drill-config-stratagem-options"></div>
+
+                <div class="game-config-popup__action-buttons">
+                    <button
+                        role="button"
+                        data-action-type="drill-config--save"
+                        class="button save-button"
+                    >
+                        save
+                    </button>
+                    <button
+                        role="button"
+                        data-action-type="drill-config--close"
+                        class="button close-button"
+                    >
+                        close
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="game-config-popup-container" id="game-config-popup">
+            <div class="game-config-popup">
+                <p class="game-config-popup__title">Change your keybinds</p>
+                <div class="game-config-popup__key-bindings">
+                    <div class="key-bind-container key-bind-container--up">
+                        <p>
+                            <img
+                                class="arrow-image"
+                                src="data/Images/Arrows/U - Copy.png"
+                            />
+                        </p>
+                        <input name="up" type="text" />
+                    </div>
+                    <div class="key-bind-container key-bind-container--left">
+                        <p>
+                            <img
+                                class="arrow-image"
+                                src="data/Images/Arrows/L - Copy.png"
+                            />
+                        </p>
+                        <input name="left" type="text" />
+                    </div>
+                    <div class="key-bind-container key-bind-container--down">
+                        <p>
+                            <img
+                                class="arrow-image"
+                                src="data/Images/Arrows/D - Copy.png"
+                            />
+                        </p>
+                        <input name="down" type="text" />
+                    </div>
+                    <div class="key-bind-container key-bind-container--right">
+                        <p>
+                            <img
+                                class="arrow-image"
+                                src="data/Images/Arrows/R - Copy.png"
+                            />
+                        </p>
+                        <input name="right" type="text" />
+                    </div>
+                </div>
+                <div class="game-config-popup__action-buttons">
+                    <button
+                        role="button"
+                        data-action-type="game-config--save"
+                        class="button save-button"
+                    >
+                        save
+                    </button>
+                    <button
+                        role="button"
+                        data-action-type="game-config--close"
+                        class="button close-button"
+                    >
+                        close
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <div class="info__config-actions-container">
+                <button
+                    role="button"
+                    data-action-type="drill-config--open"
+                    class="button"
+                >
+                    select stratagems
+                </button>
+            </div>
+            <div class="info__config-actions-container">
+                <button
+                    role="button"
+                    data-action-type="game-config--open"
+                    class="button"
+                >
+                    change keybinds
+                </button>
+            </div>
+            <p class="larger-info">
+                <a href="/">Test your skills!</a>
+            </p>
+            <p class="larger-info">
+                Check out Helldivers 2 on
+                <a
+                    href="https://store.steampowered.com/app/553850/HELLDIVERS_2/"
+                    target="_blank"
+                    >Steam</a
+                >
+                and
+                <a
+                    href="https://www.playstation.com/en-us/games/helldivers-2/"
+                    target="_blank"
+                    >Playstation</a
+                >!<br />
+            </p>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="./drill.js"></script>

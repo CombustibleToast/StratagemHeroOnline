@@ -1,0 +1,5 @@
+.game-config-popup__stratagem-options {
+    font-size: 0.5em;
+    overflow: scroll;
+    max-height: 50vh;
+}

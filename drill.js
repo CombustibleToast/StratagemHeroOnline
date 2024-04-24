@@ -548,8 +548,8 @@ function configSaveArrowKeys() {
 }
 
 function configDrill() {
-  // Get selected stratagems from drill config stratagem checkboxes
-  let stratagemOptions = Array.from(DRILL_CONFIG_STRATAGEM_OPTIONS.getElementsByClassName(
+    // Get selected stratagems from drill config stratagem checkboxes
+    let stratagemOptions = Array.from(DRILL_CONFIG_STRATAGEM_OPTIONS.getElementsByClassName(
       "game-config-popup__stratagem-option",
     ));
     let selectedStratagemNames = stratagemOptions

@@ -240,11 +240,6 @@
     "image": "arc_thrower.svg"
   },
   {
-    "name": "Shield Generator Pack",
-    "sequence": "DULRLR",
-    "image": "shield_generator_pack.svg"
-  },
-  {
     "name": "Machine Gun Sentry",
     "sequence": "DURRU",
     "image": "machine_gun_sentry.svg"

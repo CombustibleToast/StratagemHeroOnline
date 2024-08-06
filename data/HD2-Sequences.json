@@ -30,6 +30,11 @@
     "image": "prospecting_drill.svg"
   },
   {
+    "name": "Seismic Probe",
+    "sequence": "UULRDD",
+    "image": "seismic_probe.svg"
+  },
+  {
     "name": "Super Earth Flag",
     "sequence": "DUDU",
     "image": "super_earth_flag.svg"
@@ -83,6 +88,16 @@
     "name": "Spear",
     "sequence": "DDUDD",
     "image": "spear.svg"
+  },
+  {
+    "name": "Quasar Canon LAS-99",
+    "sequence": "DDULR",
+    "image": "quasar_canon.svg"
+  },
+  {
+    "name": "Airburst Rocket Launcher",
+    "sequence": "DUULR",
+    "image": "airburst_rocket_launcher.svg"
   },
   {
     "name": "Orbital Gatling Barrage",
@@ -240,9 +255,14 @@
     "image": "arc_thrower.svg"
   },
   {
-    "name": "Shield Generator Pack",
-    "sequence": "DULRLR",
-    "image": "shield_generator_pack.svg"
+    "name": "Shield Generator Relay",
+    "sequence": "DDLRLR",
+    "image": "shield_generator_relay.svg"
+  },
+  {
+    "name": "Heavy Machine Gun MG-101",
+    "sequence": "DLUDD",
+    "image": "heavy_machine_gun.svg"
   },
   {
     "name": "Machine Gun Sentry",
@@ -283,5 +303,30 @@
     "name": "Patriot Exosuit",
     "sequence": "LDRULDD",
     "image": "patriot_exosuit.svg"
+  },
+  {
+    "name": "Commando",
+    "sequence": "DLUDR",
+    "image": "commando.svg"
+  },
+  {
+    "name": "Dark Fluid Vessel",
+    "sequence": "ULRDUU",
+    "image": "dark_fluid_vessel.svg"
+  },
+  {
+    "name": "Emancipator Exosuit",
+    "sequence": "LDRULDU",
+    "image": "emancipator_exosuit.svg"
+  },
+  {
+    "name": "Hive Breaker Drill",
+    "sequence": "LUDRDD",
+    "image": "hive_breaker_drill.svg"
+  },
+  {
+    "name": "Tectonic Drill",
+    "sequence": "UDUDUD",
+    "image": "tectonic_drill.svg"
   }
 ]

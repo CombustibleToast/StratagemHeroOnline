@@ -1,22 +1,9 @@
-<svg id="avion_base_copy_2" data-name="avion base copy 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 126 126">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #de7b6c;
-        fill-rule: evenodd;
-      }
-
-      .cls-2 {
-        fill: #fff;
-      }
-    </style>
-  </defs>
-  <path id="queue_copy_2" data-name="queue copy 2" class="cls-1" d="M9,47l29-8,9-29,7,7V55H16Z"/>
-  <path id="Ellipse_1_copy_5" data-name="Ellipse 1 copy 5" class="cls-1" d="M98,112L82,95H72a9.994,9.994,0,0,0-19-4.337,9.983,9.983,0,0,0-18,0,9.987,9.987,0,0,0-18.295.665L9,79,59,60,78,10l12.47,7.335A9.985,9.985,0,0,0,88.663,36a9.983,9.983,0,0,0,0,18A10,10,0,0,0,95,72.8V83l17,17,1,14Z"/>
-  <circle class="cls-2" cx="26" cy="95" r="8"/>
-  <circle id="Ellipse_1_copy" data-name="Ellipse 1 copy" class="cls-2" cx="44" cy="95" r="8"/>
-  <circle id="Ellipse_1_copy_2" data-name="Ellipse 1 copy 2" class="cls-2" cx="62" cy="95" r="8"/>
-  <circle id="Ellipse_1_copy_9" data-name="Ellipse 1 copy 9" class="cls-2" cx="93" cy="63" r="8"/>
-  <circle id="Ellipse_1_copy_10" data-name="Ellipse 1 copy 10" class="cls-2" cx="93" cy="45" r="8"/>
-  <circle id="Ellipse_1_copy_11" data-name="Ellipse 1 copy 11" class="cls-2" cx="93" cy="27" r="8"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 126 126">
+    <path fill="#de7b6c" fill-rule="evenodd" d="m9 47 29-8 9-29 7 7v38H16zm89 65L82 95h-9.026a10.5 10.5 0 0 0-10.482-10l-.288.014c-.069 0-.136-.01-.2-.01a9.959 9.959 0 0 0-8 4c-1.972-2.686-5.412-4-9-4a9.283 9.283 0 0 0-3.943.448 10.012 10.012 0 0 0-5.293 3.922A10.979 10.979 0 0 0 26.994 85l-.622.031L26 85a10 10 0 0 0-9.295 6.328L9 79l50-19 19-50 11.3 6.645A10.989 10.989 0 0 0 87.281 36.4a10.484 10.484 0 0 0-.78 17.73A10.99 10.99 0 0 0 95 73.819V83l17 17 1 14z"/>
+    <g fill="#fff">
+        <path fill-rule="evenodd" d="M26.493 88.014A7.493 7.493 0 1 1 19 95.507a7.493 7.493 0 0 1 7.493-7.493zm18.01 0a7.493 7.493 0 1 1-7.493 7.493 7.493 7.493 0 0 1 7.49-7.493zm18 0a7.493 7.493 0 1 1-7.508 7.493 7.5 7.5 0 0 1 7.505-7.493z"/>
+        <circle cx="92.5" cy="63.5" r="7.5"/>
+        <circle cx="92.5" cy="45.5" r="7.5"/>
+        <circle cx="92.5" cy="27.5" r="7.5"/>
+    </g>
 </svg>
